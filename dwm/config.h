@@ -5,17 +5,17 @@
 #define TERMCLASS "alacritty"
 
 /* appearance */
-static unsigned int borderpx  = 1;        /* border pixel of windows */
-static unsigned int snap      = 32;       /* snap pixel */
+static unsigned int borderpx  = 1;   // border pixel of windows */
+static unsigned int snap      = 32;  // snap pixel */
 static unsigned int gappih    = 3;   // horiz inner gap
 static unsigned int gappiv    = 3;   // vert inner gap
 static unsigned int gappoh    = 5;   // horiz outer gap
 static unsigned int gappov    = 5;   // vert outer gap
 static int swallowfloating    = 0;   // means swallow floating windows by default */
-static int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
-static int showbar            = 1;        /* 0 means no bar */
-static int topbar             = 1;        /* 0 means bottom bar */
-static char *fonts[]          = { "Dejavu Sans Mono for Powerline:size=9",
+static int smartgaps          = 0;   // 1 means no outer gap when there is only one window */
+static int showbar            = 1;   // 0 means no bar */
+static int topbar             = 1;   // 0 means bottom bar */
+static char *fonts[]          = { "monospace:size=10",
                                  "JoyPixels:pixelsize=9:antialias=true:autohint=true"};
 static const char dmenufont[]       = "monospace:size=10";
 static char col_gray1[]       = "#222222";
@@ -53,22 +53,22 @@ static int resizehints = 1;    /* 1 means respect size hints in tiled resizals *
 #define FORCE_VSPLIT 1 // nrowgrid: force two clients to always split vertically
 #include "vanitygaps.c"
 static const Layout layouts[] = {
-    /* symbol     arrange function */
+    /* symbol   arrange function */
     {"[]=",     tile},   /* first entry is default */
     {"TTT",     bstack}, /* Master on top, slaves on bottom */
     {"###",     nrowgrid},
 
-    {"[@]",    spiral},   /* Fibonacci spiral */
-    {"[\\]",   dwindle}, /* Decreasing in size right and leftward */
+    {"[@]",     spiral},   /* Fibonacci spiral */
+    {"[\\]",    dwindle}, /* Decreasing in size right and leftward */
 
-    {"[D]",    deck},    /* Master on left, slaves in monocle-like mode on right */
-    {"[M]",    monocle}, /* All windows on top of eachother */
+    {"[D]",     deck},    /* Master on left, slaves in monocle-like mode on right */
+    {"[M]",     monocle}, /* All windows on top of eachother */
 
-    {"|M|",    centeredmaster},         /* Master in middle, slaves on sides */
-    {">M>",    centeredfloatingmaster}, /* Same but master floats */
+    {"|M|",     centeredmaster},         /* Master in middle, slaves on sides */
+    {">M>",     centeredfloatingmaster}, /* Same but master floats */
 
-    {"><>",   NULL}, /* no layout function means floating behavior */
-    {NULL, NULL},
+    {"><>",     NULL}, /* no layout function means floating behavior */
+    {NULL,      NULL},
 };
 
 /* key definitions */
@@ -77,7 +77,7 @@ static const Layout layouts[] = {
 #define TAGKEYS(KEY,TAG)                                                          \
   { MODKEY,                       KEY,      view,           {.ui = 1 << TAG} },   \
   { MODKEY|ALTMOD,                KEY,      toggleview,     {.ui = 1 << TAG} },   \
-  { ControlMask|ALTMOD,             KEY,      tag,            {.ui = 1 << TAG} }, \
+  { ControlMask|ALTMOD,           KEY,      tag,            {.ui = 1 << TAG} }, \
   { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
@@ -105,100 +105,100 @@ static const char *xfcecmd[]          = { "xfce4-settings-manager", NULL };
 #define AMOD MODKEY | ALTMOD
 
 static Key keys[] = {
-  /* modifier                     key        function        argument */
-  { MODKEY,                       XK_d,          spawn,          {.v = dmenucmd } },
-  { MODKEY,                       XK_w,          spawn,          {.v = firefox}},
-  { SMOD,                         XK_Return,     spawn,          {.v = filecmd}},
-  { MODKEY,                       XK_Return,     spawn,          {.v = termcmd } },
-  { ALTMOD,                       XK_Return,     spawn,          {.v = urxvtcmd} },
-  { CMOD,                         XK_g,          spawn,          {.v = lxcmd} },
-  { CMOD,                         XK_b,          spawn,          {.v = baobabcmd} },
-  { MODKEY,                       XK_l,          spawn,          {.v = arcologoutcmd} },
-  { SMOD,                         XK_x,          spawn,          {.v = xfcecmd} },
-  { AMOD,                         XK_l,          spawn,          {.v = authycmd} },
-  { SMOD,                         XK_b,          togglebar,      {0} },
-  { MODKEY,                       XK_b,          focusstack,     {.i = +1 } },
-  { MODKEY,                       XK_k,          focusstack,     {.i = -1 } },
-  { CMOD,                         XK_h,          incnmaster,     {.i = +1 } },
-  { CMOD,                         XK_v,          incnmaster,     {.i = -1 } },
-  { MODKEY,                       XK_h,          setmfact,       {.f = -0.05} },
-  { MODKEY,                       XK_l,          setmfact,       {.f = +0.05} },
-  { CMOD,                         XK_Return,     zoom,           {0} },
-	{ MODKEY,                       XK_Tab,        view,           {0} },
-  { MODKEY,                       XK_x,          killclient,     {0} },
-  { CMOD,                         XK_e,          quit,           {0} },
-  { MODKEY,                       XK_0,          view,           {.ui = ~0 } },
-  { SMOD,                         XK_0,          tag,            {.ui = ~0 } },
-  { MODKEY,                       XK_comma,      focusmon,       {.i = -1 } },
-  { MODKEY,                       XK_period,     focusmon,       {.i = +1 } },
-  { SMOD,                         XK_comma,      tagmon,         {.i = -1 } },
-  { SMOD,                         XK_period,     tagmon,         {.i = +1 } },
+  /* modifier                 key        function        argument */
+  { MODKEY,                   XK_d,         spawn,          {.v = dmenucmd } },
+  { MODKEY,                   XK_w,         spawn,          {.v = firefox}},
+  { SMOD,                     XK_Return,    spawn,          {.v = filecmd}},
+  { MODKEY,                   XK_Return,    spawn,          {.v = termcmd } },
+  { ALTMOD,                   XK_Return,    spawn,          {.v = urxvtcmd} },
+  { CMOD,                     XK_g,         spawn,          {.v = lxcmd} },
+  { CMOD,                     XK_b,         spawn,          {.v = baobabcmd} },
+  { MODKEY,                   XK_l,         spawn,          {.v = arcologoutcmd} },
+  { SMOD,                     XK_x,         spawn,          {.v = xfcecmd} },
+  { AMOD,                     XK_l,         spawn,          {.v = authycmd} },
+  { SMOD,                     XK_b,         togglebar,      {0} },
+  { MODKEY,                   XK_b,         focusstack,     {.i = +1 } },
+  { MODKEY,                   XK_k,         focusstack,     {.i = -1 } },
+  { CMOD,                     XK_h,         incnmaster,     {.i = +1 } },
+  { CMOD,                     XK_v,         incnmaster,     {.i = -1 } },
+  { MODKEY,                   XK_h,         setmfact,       {.f = -0.05} },
+  { MODKEY,                   XK_l,         setmfact,       {.f = +0.05} },
+  { CMOD,                     XK_Return,    zoom,           {0} },
+	{ MODKEY,                   XK_Tab,       view,           {0} },
+  { MODKEY,                   XK_x,         killclient,     {0} },
+  { CMOD,                     XK_e,         quit,           {0} },
+  { MODKEY,                   XK_0,         view,           {.ui = ~0 } },
+  { SMOD,                     XK_0,         tag,            {.ui = ~0 } },
+  { MODKEY,                   XK_comma,     focusmon,       {.i = -1 } },
+  { MODKEY,                   XK_period,    focusmon,       {.i = +1 } },
+  { SMOD,                     XK_comma,     tagmon,         {.i = -1 } },
+  { SMOD,                     XK_period,    tagmon,         {.i = +1 } },
 
   // Gaps
-  { CMOD,                          XK_a,         togglegaps,     {1} },
-  { SMOD,                          XK_equal,     defaultgaps,    {0} },
-  { MODKEY,                        XK_equal,     incrgaps,       {.i = +1} },
-  { CMOD,                          XK_d,         incrgaps,       {.i = -1} },
+  { CMOD,                     XK_a,         togglegaps,     {1} },
+  { SMOD,                     XK_equal,     defaultgaps,    {0} },
+  { MODKEY,                   XK_equal,     incrgaps,       {.i = +1} },
+  { CMOD,                     XK_d,         incrgaps,       {.i = -1} },
 
   // Layout
-  { MODKEY,                       XK_e,          setlayout,      {.v = &layouts[0]} }, // tile
-  { SMOD,                         XK_e,          setlayout,      {.v = &layouts[1]} },   // bstack
-  { SMOD,                         XK_u,          setlayout,      {.v = &layouts[2]} },   // nrowgrid
-  { SMOD,                         XK_p,          setlayout,      {.v = &layouts[3]} },   // spiral
-  { MODKEY,                       XK_q,          setlayout,      {.v = &layouts[4]} }, // dwindle
-  { SMOD,                         XK_n,          setlayout,      {.v = &layouts[5]} },   // deck
-  { MODKEY,                       XK_y,          setlayout,      {.v = &layouts[6]} }, // monocle
-  { SMOD,                         XK_y,          setlayout,      {.v = &layouts[7]} },   // cmaster
-  { MODKEY,                       XK_f,          setlayout,      {.v = &layouts[8]} }, // floating cmaster
-  { MODKEY,                       XK_space,      setlayout,      {0} },
-  { SMOD,                         XK_space,      togglefloating, {0} },
-  { SMOD,                         XK_h,          cyclelayout,    {.i = -1} },
-  { SMOD,                         XK_l,          cyclelayout,    {.i = +1} },
-  { ALTMOD,                       XK_b,          spawn,          SHCMD("~/.local/bin/dwm/wal") },
-  {MODKEY,                        XK_f,          togglefullscr,  {0}},
+  { MODKEY,                   XK_e,         setlayout,      {.v = &layouts[0]} }, // tile
+  { SMOD,                     XK_e,         setlayout,      {.v = &layouts[1]} },   // bstack
+  { SMOD,                     XK_u,         setlayout,      {.v = &layouts[2]} },   // nrowgrid
+  { SMOD,                     XK_p,         setlayout,      {.v = &layouts[3]} },   // spiral
+  { MODKEY,                   XK_q,         setlayout,      {.v = &layouts[4]} }, // dwindle
+  { SMOD,                     XK_n,         setlayout,      {.v = &layouts[5]} },   // deck
+  { MODKEY,                   XK_y,         setlayout,      {.v = &layouts[6]} }, // monocle
+  { SMOD,                     XK_y,         setlayout,      {.v = &layouts[7]} },   // cmaster
+  { MODKEY,                   XK_f,         setlayout,      {.v = &layouts[8]} }, // floating cmaster
+  { MODKEY,                   XK_space,     setlayout,      {0} },
+  { SMOD,                     XK_space,     togglefloating, {0} },
+  { SMOD,                     XK_h,         cyclelayout,    {.i = -1} },
+  { SMOD,                     XK_l,         cyclelayout,    {.i = +1} },
+  { MODKEY,                   XK_f,         togglefullscr,  {0} },
+  { ALTMOD,                   XK_b,         spawn,          SHCMD("~/.local/bin/dwm/wal") },
 
   // shiftview
-  { ALTMOD | ControlMask,         XK_l,          shiftview,      {.i = 1} },
-  { ALTMOD | ControlMask,         XK_h,          shiftview,      {.i = -1} },
-  { ALTMOD | ControlMask,         XK_k,          shiftview,      {.i = 1}} ,
-  { ALTMOD | ControlMask,         XK_n,          shiftview,      {.i = -1} },
-  { ALTMOD | ControlMask,         XK_Delete,     spawn,          SHCMD("~/.local/bin/dwm/sysact") },
+  { ALTMOD | ControlMask,     XK_l,         shiftview,      {.i = 1} },
+  { ALTMOD | ControlMask,     XK_h,         shiftview,      {.i = -1} },
+  { ALTMOD | ControlMask,     XK_k,         shiftview,      {.i = 1}} ,
+  { ALTMOD | ControlMask,     XK_n,         shiftview,      {.i = -1} },
+  { ALTMOD | ControlMask,     XK_Delete,    spawn,          SHCMD("~/.local/bin/dwm/sysact") },
 
 
   // Audio
-  { 0,                             XF86XK_AudioMute,          spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
-  { 0,                             XF86XK_AudioRaiseVolume,   spawn,    SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
-  { 0,                             XF86XK_AudioLowerVolume,   spawn,    SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
+  { 0,                        XF86XK_AudioMute,          spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+  { 0,                        XF86XK_AudioRaiseVolume,   spawn,    SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
+  { 0,                        XF86XK_AudioLowerVolume,   spawn,    SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
 
   // mpc
-  { 0,                             XF86XK_AudioPrev,          spawn,    SHCMD("mpc prev") },
-  { 0,                             XF86XK_AudioNext,          spawn,    SHCMD("mpc next") },
-  { 0,                             XF86XK_AudioPlay,          spawn,    SHCMD("mpc pause") },
+  { 0,                        XF86XK_AudioPrev,          spawn,    SHCMD("mpc prev") },
+  { 0,                        XF86XK_AudioNext,          spawn,    SHCMD("mpc next") },
+  { 0,                        XF86XK_AudioPlay,          spawn,    SHCMD("mpc pause") },
 
   // Screenshot
-  { MODKEY,                        XK_Print,                  spawn,    ESHCMD("screenshot --all")},
-  { CMOD,                          XK_Print,                  spawn,    ESHCMD("screenshot --focused")},
-  { 0,                             XK_Print,                  spawn,    ESHCMD("screenshot --select")},
+  { MODKEY,                   XK_Print,                  spawn,    ESHCMD("screenshot --all")},
+  { CMOD,                     XK_Print,                  spawn,    ESHCMD("screenshot --focused")},
+  { 0,                        XK_Print,                  spawn,    ESHCMD("screenshot --select")},
 
   // Power
-  { 0,                             XF86XK_Sleep,              spawn,    ESHCMD("lock-sleep")},
-  { 0,                             XF86XK_PowerOff,           spawn,    SHCMD("sysact")},
+  { 0,                        XF86XK_Sleep,              spawn,    ESHCMD("lock-sleep")},
+  { 0,                        XF86XK_PowerOff,           spawn,    SHCMD("sysact")},
 
   // Brightness
-  { 0,                             XF86XK_MonBrightnessUp,    spawn,    SHCMD("brightnessctl set 100+") },
-  { 0,                             XF86XK_MonBrightnessDown,  spawn,    SHCMD("brightnessctl set 100-") },
-  { 0,                             XF86XK_TouchpadOff,        spawn,    SHCMD("synclient TouchpadOff=1") },
-  { 0,                             XF86XK_TouchpadOn,         spawn,    SHCMD("synclient TouchpadOff=0") },
+  { 0,                        XF86XK_MonBrightnessUp,    spawn,    SHCMD("brightnessctl set 100+") },
+  { 0,                        XF86XK_MonBrightnessDown,  spawn,    SHCMD("brightnessctl set 100-") },
+  { 0,                        XF86XK_TouchpadOff,        spawn,    SHCMD("synclient TouchpadOff=1") },
+  { 0,                        XF86XK_TouchpadOn,         spawn,    SHCMD("synclient TouchpadOff=0") },
 
-  TAGKEYS(                         XK_1,                      0)
-  TAGKEYS(                         XK_2,                      1)
-  TAGKEYS(                         XK_3,                      2)
-  TAGKEYS(                         XK_4,                      3)
-  TAGKEYS(                         XK_5,                      4)
-  TAGKEYS(                         XK_6,                      5)
-  TAGKEYS(                         XK_7,                      6)
-  TAGKEYS(                         XK_8,                      7)
-  TAGKEYS(                         XK_9,                      8)
+  TAGKEYS(                    XK_1,                      0)
+  TAGKEYS(                    XK_2,                      1)
+  TAGKEYS(                    XK_3,                      2)
+  TAGKEYS(                    XK_4,                      3)
+  TAGKEYS(                    XK_5,                      4)
+  TAGKEYS(                    XK_6,                      5)
+  TAGKEYS(                    XK_7,                      6)
+  TAGKEYS(                    XK_8,                      7)
+  TAGKEYS(                    XK_9,                      8)
 };
 
 

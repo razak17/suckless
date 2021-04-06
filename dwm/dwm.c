@@ -249,7 +249,6 @@ static void sigdwmblocks(const Arg *arg);
 static void sighup(int unused);
 static void sigterm(int unused);
 static void spawn(const Arg *arg);
-static int stackpos(const Arg *arg);
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void togglebar(const Arg *arg);
@@ -1010,19 +1009,30 @@ focusmon(const Arg *arg)
 	focus(NULL);
 }
 
-void
-focusstack(const Arg *arg)
-{
-	int i = stackpos(arg);
-	Client *c, *p;
+void focusstack(const Arg *arg) {
+  Client *c = NULL, *i;
 
-	if (i < 0 || !selmon->sel || selmon->sel->isfullscreen)
-		return;
-
-	for(p = NULL, c = selmon->clients; c && (i || !ISVISIBLE(c));
-	    i -= ISVISIBLE(c) ? 1 : 0, p = c, c = c->next);
-	focus(c ? c : p);
-	restack(selmon);
+  if (!selmon->sel)
+    return;
+  if (arg->i > 0) {
+    for (c = selmon->sel->next; c && !ISVISIBLE(c); c = c->next)
+      ;
+    if (!c)
+      for (c = selmon->clients; c && !ISVISIBLE(c); c = c->next)
+        ;
+  } else {
+    for (i = selmon->clients; i != selmon->sel; i = i->next)
+      if (ISVISIBLE(i))
+        c = i;
+    if (!c)
+      for (; i; i = i->next)
+        if (ISVISIBLE(i))
+          c = i;
+  }
+  if (c) {
+    focus(c);
+    restack(selmon);
+  }
 }
 
 Atom
@@ -1689,36 +1699,6 @@ setfullscreen(Client *c, int fullscreen)
 		resizeclient(c, c->x, c->y, c->w, c->h);
 		arrange(c->mon);
 	}
-}
-
-int
-stackpos(const Arg *arg) {
-	int n, i;
-	Client *c, *l;
-
-	if(!selmon->clients)
-		return -1;
-
-	if(arg->i == PREVSEL) {
-		for(l = selmon->stack; l && (!ISVISIBLE(l) || l == selmon->sel); l = l->snext);
-		if(!l)
-			return -1;
-		for(i = 0, c = selmon->clients; c != l; i += ISVISIBLE(c) ? 1 : 0, c = c->next);
-		return i;
-	}
-	else if(ISINC(arg->i)) {
-		if(!selmon->sel)
-			return -1;
-		for(i = 0, c = selmon->clients; c != selmon->sel; i += ISVISIBLE(c) ? 1 : 0, c = c->next);
-		for(n = i; c; n += ISVISIBLE(c) ? 1 : 0, c = c->next);
-		return MOD(i + GETINC(arg->i), n);
-	}
-	else if(arg->i < 0) {
-		for(i = 0, c = selmon->clients; c; i += ISVISIBLE(c) ? 1 : 0, c = c->next);
-		return MAX(i + arg->i, 0);
-	}
-	else
-		return arg->i;
 }
 
 void

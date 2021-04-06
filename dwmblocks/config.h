@@ -12,7 +12,7 @@ static const Block blocks[] = {
     {"🧠 ", "dt-memory", 8, 26},
     {"💻 ", "sb-swap", 27, 2},
     {"", "sb-volume", 0, 10},
-    // {"", "sb-nettraf", 1, 16},
+    {"", "sb-nettraf", 1, 16},
     {"", "sb-battery", 17, 3},
     // {" 🔆 ", "brightness", 6, 1},
     {"", "sb-internet", 7, 4},
