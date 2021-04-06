@@ -9,7 +9,7 @@ static const Block blocks[] = {
     // {"", "sb-cpu", 10, 17},
     {"", "sb-cpusage", 7, 18},
     // {"", "sb-disk", 10, 21},
-    {" ", "dt-memory", 8, 26},
+    {"🧠 ", "dt-memory", 8, 26},
     {"💻 ", "sb-swap", 27, 2},
     {"", "sb-volume", 0, 10},
     // {"", "sb-nettraf", 1, 16},

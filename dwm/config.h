@@ -15,7 +15,7 @@ static int swallowfloating    = 0;   // means swallow floating windows by defaul
 static int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
-static char *fonts[]          = {"monospace:size=9",
+static char *fonts[]          = { "Dejavu Sans Mono for Powerline:size=9",
                                  "JoyPixels:pixelsize=9:antialias=true:autohint=true"};
 static const char dmenufont[]       = "monospace:size=10";
 static char col_gray1[]       = "#222222";
@@ -23,34 +23,17 @@ static char col_gray2[]       = "#444444";
 static char col_gray3[]       = "#bbbbbb";
 static char col_gray4[]       = "#030303";
 static char col_cyan[]        = "#7ec0ee";
-static char normbgcolor[]     = "#222222";
-static char normbordercolor[] = "#444444";
-static char normfgcolor[]     = "#bbbbbb";
-static char selfgcolor[]      = "#030303";
-static char selbordercolor[]  = "#7ec0ee";
-static char selbgcolor[]      = "#7ec0ee";
 static char *colors[][3]      = {
   /*               fg         bg         border   */
   [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
   [SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
-typedef struct {
-  const char *name;
-  const void *cmd;
-} Sp;
-const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL};
-const char *spcmd2[] = {TERMINAL, "-n",    "spcalc", "-f", "monospace:size=16",
-                        "-g",     "50x20", "-e",     "bc", "-lq",
-                        NULL};
-static Sp scratchpads[] = {
-    /* name          cmd  */
-    {"spterm", spcmd1},
-    {"spcalc", spcmd2},
-};
-
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+// static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7" };
+static const char *tags[] = {"", "", "", "", "", "", ""};
+// static const char *tags[] = {"🐧","📺", "", "","","", "", ""};
+// static const char *tags[] = {"🕹", "📰","", "🔍", "💀", "👷",
 
 static const Rule rules[] = {
   /* xprop(1):
@@ -59,7 +42,7 @@ static const Rule rules[] = {
    */
   /* class      instance    title       tags mask     isfloating   monitor */
   { "Gimp",     NULL,       NULL,       0,            1,           -1 },
-  { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+  { "Firefox",  NULL,       NULL,       1 << 7,       0,           -1 },
 };
 
 /* layout(s) */
@@ -113,31 +96,6 @@ static const char *authycmd[]         = { "authy", NULL };
 static const char *baobabcmd[]        = { "baobab", NULL };
 static const char *arcologoutcmd[]    = { "arcolinux-logout", NULL };
 static const char *xfcecmd[]          = { "xfce4-settings-manager", NULL };
-
-/*
- * Xresources preferences to load at startup
- */
-ResourcePref resources[] = {
-    {"color0", STRING, &normbordercolor},
-    {"color8", STRING, &selbordercolor},
-    {"color0", STRING, &normbgcolor},
-    {"color4", STRING, &normfgcolor},
-    {"color0", STRING, &selfgcolor},
-    {"color4", STRING, &selbgcolor},
-    {"borderpx", INTEGER, &borderpx},
-    {"snap", INTEGER, &snap},
-    {"showbar", INTEGER, &showbar},
-    {"topbar", INTEGER, &topbar},
-    {"nmaster", INTEGER, &nmaster},
-    {"resizehints", INTEGER, &resizehints},
-    {"mfact", FLOAT, &mfact},
-    {"gappih", INTEGER, &gappih},
-    {"gappiv", INTEGER, &gappiv},
-    {"gappoh", INTEGER, &gappoh},
-    {"gappov", INTEGER, &gappov},
-    {"swallowfloating", INTEGER, &swallowfloating},
-    {"smartgaps", INTEGER, &smartgaps},
-};
 
 #include "shiftview.c"
 #include <X11/XF86keysym.h>
@@ -197,6 +155,7 @@ static Key keys[] = {
   { SMOD,                         XK_h,          cyclelayout,    {.i = -1} },
   { SMOD,                         XK_l,          cyclelayout,    {.i = +1} },
   { ALTMOD,                       XK_b,          spawn,          SHCMD("~/.local/bin/dwm/wal") },
+  {MODKEY,                        XK_f,          togglefullscr,  {0}},
 
   // shiftview
   { ALTMOD | ControlMask,         XK_l,          shiftview,      {.i = 1} },
@@ -205,10 +164,6 @@ static Key keys[] = {
   { ALTMOD | ControlMask,         XK_n,          shiftview,      {.i = -1} },
   { ALTMOD | ControlMask,         XK_Delete,     spawn,          SHCMD("~/.local/bin/dwm/sysact") },
 
-  {MODKEY,                        XK_apostrophe, togglescratch, {.ui = 1}},
-  {MODKEY,                        XK_s,          togglesticky, {0}},
-  {MODKEY,                        XK_f,          togglefullscr, {0}},
-  {SMOD,                          XK_apostrophe, togglescratch, {.ui = 0}},
 
   // Audio
   { 0,                             XF86XK_AudioMute,          spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
