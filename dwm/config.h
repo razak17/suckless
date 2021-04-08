@@ -15,9 +15,9 @@ static int swallowfloating    = 0;   // means swallow floating windows by defaul
 static int smartgaps          = 0;   // 1 means no outer gap when there is only one window */
 static int showbar            = 1;   // 0 means no bar */
 static int topbar             = 1;   // 0 means bottom bar */
-static char *fonts[]          = { "monospace:size=10",
+static const char *fonts[]          = { "monospace:size=9",
                                  "JoyPixels:pixelsize=9:antialias=true:autohint=true"};
-static const char dmenufont[]       = "monospace:size=10";
+static const char dmenufont[] = "monospace:size=10";
 static char col_gray1[]       = "#222222";
 static char col_gray2[]       = "#444444";
 static char col_gray3[]       = "#bbbbbb";
@@ -31,9 +31,9 @@ static char *colors[][3]      = {
 
 /* tagging */
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7" };
-static const char *tags[] = {"", "", "", "", "", "", ""};
-// static const char *tags[] = {"🐧","📺", "", "","","", "", ""};
-// static const char *tags[] = {"🕹", "📰","", "🔍", "💀", "👷",
+static const char *tags[] = {"💡", "📺", "📚", "📂", "🌍", "🖥️","🌍"};
+// static const char *tags[] = {"🐧🌍","📺", "", "📺","","🖥", "", " 🕝"};
+// static const char *tags[] = {"🕹", "📰","✍️", "🔍", "💀", "👷",
 
 static const Rule rules[] = {
   /* xprop(1):
@@ -128,7 +128,7 @@ static Key keys[] = {
   { MODKEY,                   XK_x,         killclient,     {0} },
   { CMOD,                     XK_e,         quit,           {0} },
   { MODKEY,                   XK_0,         view,           {.ui = ~0 } },
-  { SMOD,                     XK_0,         tag,            {.ui = ~0 } },
+  { AMOD,                     XK_0,         tag,            {.ui = ~0 } },
   { MODKEY,                   XK_comma,     focusmon,       {.i = -1 } },
   { MODKEY,                   XK_period,    focusmon,       {.i = +1 } },
   { SMOD,                     XK_comma,     tagmon,         {.i = -1 } },
@@ -167,8 +167,8 @@ static Key keys[] = {
 
   // Audio
   { 0,                        XF86XK_AudioMute,          spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
-  { 0,                        XF86XK_AudioRaiseVolume,   spawn,    SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
-  { 0,                        XF86XK_AudioLowerVolume,   spawn,    SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
+  { 0,                        XF86XK_AudioRaiseVolume,   spawn,    SHCMD("pamixer --allow-boost -i 2; kill -44 $(pidof dwmblocks)") },
+  { 0,                        XF86XK_AudioLowerVolume,   spawn,    SHCMD("pamixer --allow-boost -d 2; kill -44 $(pidof dwmblocks)") },
 
   // mpc
   { 0,                        XF86XK_AudioPrev,          spawn,    SHCMD("mpc prev") },
@@ -190,9 +190,9 @@ static Key keys[] = {
   { 0,                        XF86XK_TouchpadOff,        spawn,    SHCMD("synclient TouchpadOff=1") },
   { 0,                        XF86XK_TouchpadOn,         spawn,    SHCMD("synclient TouchpadOff=0") },
 
-  TAGKEYS(                    XK_1,                      0)
+  TAGKEYS(                    XK_o,                      0)
   TAGKEYS(                    XK_2,                      1)
-  TAGKEYS(                    XK_3,                      2)
+  TAGKEYS(                    XK_i,                      2)
   TAGKEYS(                    XK_4,                      3)
   TAGKEYS(                    XK_5,                      4)
   TAGKEYS(                    XK_6,                      5)
