@@ -77,7 +77,7 @@ static const Layout layouts[] = {
 #define TAGKEYS(KEY,TAG)                                                          \
   { MODKEY,                       KEY,      view,           {.ui = 1 << TAG} },   \
   { MODKEY|ALTMOD,                KEY,      toggleview,     {.ui = 1 << TAG} },   \
-  { ControlMask|ALTMOD,           KEY,      tag,            {.ui = 1 << TAG} }, \
+  { ControlMask|ALTMOD,           KEY,      tag,            {.ui = 1 << TAG} },   \
   { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
@@ -88,10 +88,11 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]         = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]          = { "alacritty", NULL };
+static const char *urxvtcmd[]         = { "urxvt", NULL };
+static const char *stcmd[]         = { "st", NULL };
 static const char *firefox[]          = { "firefox", NULL };
 static const char *filecmd[]          = { "thunar", NULL };
 static const char *lxcmd[]            = { "lxappearance", NULL };
-static const char *urxvtcmd[]         = { "urxvt", NULL };
 static const char *authycmd[]         = { "authy", NULL };
 static const char *baobabcmd[]        = { "baobab", NULL };
 static const char *arcologoutcmd[]    = { "arcolinux-logout", NULL };
@@ -106,16 +107,17 @@ static const char *xfcecmd[]          = { "xfce4-settings-manager", NULL };
 
 static Key keys[] = {
   /* modifier                 key        function        argument */
-  { MODKEY,                   XK_d,         spawn,          {.v = dmenucmd } },
-  { MODKEY,                   XK_w,         spawn,          {.v = firefox}},
-  { SMOD,                     XK_Return,    spawn,          {.v = filecmd}},
-  { MODKEY,                   XK_Return,    spawn,          {.v = termcmd } },
+  { MODKEY,                   XK_d,         spawn,          {.v = dmenucmd} },
+  { MODKEY,                   XK_w,         spawn,          {.v = firefox} },
+  { SMOD,                     XK_Return,    spawn,          {.v = filecmd} },
+  { MODKEY,                   XK_Return,    spawn,          {.v = termcmd} },
   { ALTMOD,                   XK_Return,    spawn,          {.v = urxvtcmd} },
+  { ALTMOD | ShiftMask,       XK_Return,    spawn,          {.v = stcmd} },
   { CMOD,                     XK_g,         spawn,          {.v = lxcmd} },
   { CMOD,                     XK_b,         spawn,          {.v = baobabcmd} },
-  { MODKEY,                   XK_l,         spawn,          {.v = arcologoutcmd} },
   { SMOD,                     XK_x,         spawn,          {.v = xfcecmd} },
   { AMOD,                     XK_l,         spawn,          {.v = authycmd} },
+  { CMOD,                     XK_l,         spawn,          {.v = arcologoutcmd} },
   { SMOD,                     XK_b,         togglebar,      {0} },
   { MODKEY,                   XK_b,         focusstack,     {.i = +1 } },
   { MODKEY,                   XK_k,         focusstack,     {.i = -1 } },
@@ -142,13 +144,13 @@ static Key keys[] = {
 
   // Layout
   { MODKEY,                   XK_e,         setlayout,      {.v = &layouts[0]} }, // tile
-  { SMOD,                     XK_e,         setlayout,      {.v = &layouts[1]} },   // bstack
-  { SMOD,                     XK_u,         setlayout,      {.v = &layouts[2]} },   // nrowgrid
-  { SMOD,                     XK_p,         setlayout,      {.v = &layouts[3]} },   // spiral
+  { SMOD,                     XK_e,         setlayout,      {.v = &layouts[1]} }, // bstack
+  { SMOD,                     XK_u,         setlayout,      {.v = &layouts[2]} }, // nrowgrid
+  { SMOD,                     XK_p,         setlayout,      {.v = &layouts[3]} }, // spiral
   { MODKEY,                   XK_q,         setlayout,      {.v = &layouts[4]} }, // dwindle
-  { SMOD,                     XK_n,         setlayout,      {.v = &layouts[5]} },   // deck
+  { SMOD,                     XK_n,         setlayout,      {.v = &layouts[5]} }, // deck
   { MODKEY,                   XK_y,         setlayout,      {.v = &layouts[6]} }, // monocle
-  { SMOD,                     XK_y,         setlayout,      {.v = &layouts[7]} },   // cmaster
+  { SMOD,                     XK_y,         setlayout,      {.v = &layouts[7]} }, // cmaster
   { MODKEY,                   XK_f,         setlayout,      {.v = &layouts[8]} }, // floating cmaster
   { MODKEY,                   XK_space,     setlayout,      {0} },
   { SMOD,                     XK_space,     togglefloating, {0} },
@@ -158,9 +160,9 @@ static Key keys[] = {
   { ALTMOD,                   XK_b,         spawn,          SHCMD("~/.local/bin/dwm/wal") },
 
   // shiftview
-  { ALTMOD | ControlMask,     XK_l,         shiftview,      {.i = 1} },
-  { ALTMOD | ControlMask,     XK_h,         shiftview,      {.i = -1} },
-  { ALTMOD | ControlMask,     XK_k,         shiftview,      {.i = 1}} ,
+  { ALTMOD,                   XK_l,         shiftview,      {.i = 1} },
+  { ALTMOD,                   XK_h,         shiftview,      {.i = -1} },
+  { ALTMOD | ControlMask,     XK_k,         shiftview,      {.i = 1} } ,
   { ALTMOD | ControlMask,     XK_n,         shiftview,      {.i = -1} },
   { ALTMOD | ControlMask,     XK_Delete,    spawn,          SHCMD("~/.local/bin/dwm/sysact") },
 
@@ -183,9 +185,11 @@ static Key keys[] = {
   // Power
   { 0,                        XF86XK_Sleep,              spawn,    ESHCMD("lock-sleep")},
   { 0,                        XF86XK_PowerOff,           spawn,    SHCMD("sysact")},
+  { 0,                        XF86XK_PowerDown,          spawn,    SHCMD("arcolinux-logout")},
 
   // Brightness
   { 0,                        XF86XK_MonBrightnessUp,    spawn,    SHCMD("brightnessctl set 100+") },
+  { ControlMask | ShiftMask,  XK_equal,                  spawn,    SHCMD("brightnessctl set 100+") },
   { 0,                        XF86XK_MonBrightnessDown,  spawn,    SHCMD("brightnessctl set 100-") },
   { 0,                        XF86XK_TouchpadOff,        spawn,    SHCMD("synclient TouchpadOff=1") },
   { 0,                        XF86XK_TouchpadOn,         spawn,    SHCMD("synclient TouchpadOff=0") },
