@@ -7,17 +7,17 @@
 /* appearance */
 static unsigned int borderpx  = 1;   // border pixel of windows */
 static unsigned int snap      = 32;  // snap pixel */
-static unsigned int gappih    = 3;   // horiz inner gap
-static unsigned int gappiv    = 3;   // vert inner gap
-static unsigned int gappoh    = 5;   // horiz outer gap
-static unsigned int gappov    = 5;   // vert outer gap
+static unsigned int gappih    = 7;   // horiz inner gap
+static unsigned int gappiv    = 7;   // vert inner gap
+static unsigned int gappoh    = 9;   // horiz outer gap
+static unsigned int gappov    = 9;   // vert outer gap
 static int swallowfloating    = 0;   // means swallow floating windows by default */
 static int smartgaps          = 0;   // 1 means no outer gap when there is only one window */
 static int showbar            = 1;   // 0 means no bar */
 static int topbar             = 1;   // 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=9",
+static const char *fonts[]          = { "Operator Mono Lig Book:size=9",
                                  "JoyPixels:pixelsize=9:antialias=true:autohint=true"};
-static const char dmenufont[] = "monospace:size=10";
+static const char dmenufont[] = "Operator Mono Lig Book:size=8";
 static char col_gray1[]       = "#222222";
 static char col_gray2[]       = "#444444";
 static char col_gray3[]       = "#bbbbbb";
@@ -88,15 +88,14 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]         = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]          = { "alacritty", NULL };
-static const char *urxvtcmd[]         = { "urxvt", NULL };
-static const char *stcmd[]         = { "st", NULL };
+static const char *termcmdfill[]      = { "alacritty", "-o", "background_opacity=1.0", NULL };
+static const char *stcmd[]            = { "st", NULL };
 static const char *firefox[]          = { "firefox", NULL };
 static const char *filecmd[]          = { "thunar", NULL };
 static const char *lxcmd[]            = { "lxappearance", NULL };
 static const char *authycmd[]         = { "authy", NULL };
 static const char *baobabcmd[]        = { "baobab", NULL };
 static const char *arcologoutcmd[]    = { "arcolinux-logout", NULL };
-static const char *xfcecmd[]          = { "xfce4-settings-manager", NULL };
 
 #include "shiftview.c"
 #include <X11/XF86keysym.h>
@@ -111,22 +110,21 @@ static Key keys[] = {
   { MODKEY,                   XK_w,         spawn,          {.v = firefox} },
   { SMOD,                     XK_Return,    spawn,          {.v = filecmd} },
   { MODKEY,                   XK_Return,    spawn,          {.v = termcmd} },
-  { ALTMOD,                   XK_Return,    spawn,          {.v = urxvtcmd} },
+  { ALTMOD,                   XK_Return,    spawn,          {.v = termcmdfill} },
   { ALTMOD | ShiftMask,       XK_Return,    spawn,          {.v = stcmd} },
   { CMOD,                     XK_g,         spawn,          {.v = lxcmd} },
   { CMOD,                     XK_b,         spawn,          {.v = baobabcmd} },
-  { SMOD,                     XK_x,         spawn,          {.v = xfcecmd} },
   { AMOD,                     XK_l,         spawn,          {.v = authycmd} },
   { CMOD,                     XK_l,         spawn,          {.v = arcologoutcmd} },
   { SMOD,                     XK_b,         togglebar,      {0} },
-  { MODKEY,                   XK_b,         focusstack,     {.i = +1 } },
+  { MODKEY,                   XK_p,         focusstack,     {.i = +1 } },
   { MODKEY,                   XK_k,         focusstack,     {.i = -1 } },
   { CMOD,                     XK_h,         incnmaster,     {.i = +1 } },
   { CMOD,                     XK_v,         incnmaster,     {.i = -1 } },
   { MODKEY,                   XK_h,         setmfact,       {.f = -0.05} },
   { MODKEY,                   XK_l,         setmfact,       {.f = +0.05} },
   { CMOD,                     XK_Return,    zoom,           {0} },
-	{ MODKEY,                   XK_Tab,       view,           {0} },
+  { MODKEY,                   XK_Tab,       view,           {0} },
   { MODKEY,                   XK_x,         killclient,     {0} },
   { CMOD,                     XK_e,         quit,           {0} },
   { MODKEY,                   XK_0,         view,           {.ui = ~0 } },
@@ -135,6 +133,7 @@ static Key keys[] = {
   { MODKEY,                   XK_period,    focusmon,       {.i = +1 } },
   { SMOD,                     XK_comma,     tagmon,         {.i = -1 } },
   { SMOD,                     XK_period,    tagmon,         {.i = +1 } },
+  { MODKEY,                   XK_semicolon, spawn,          SHCMD("skippy-xd") },
 
   // Gaps
   { CMOD,                     XK_a,         togglegaps,     {1} },
@@ -160,8 +159,8 @@ static Key keys[] = {
   { ALTMOD,                   XK_b,         spawn,          SHCMD("~/.local/bin/dwm/wal") },
 
   // shiftview
-  { ALTMOD,                   XK_l,         shiftview,      {.i = 1} },
-  { ALTMOD,                   XK_h,         shiftview,      {.i = -1} },
+  { MODKEY,                   XK_n,         shiftview,      {.i = 1} },
+  { MODKEY,                   XK_b,         shiftview,      {.i = -1} },
   { ALTMOD | ControlMask,     XK_k,         shiftview,      {.i = 1} } ,
   { ALTMOD | ControlMask,     XK_n,         shiftview,      {.i = -1} },
   { ALTMOD | ControlMask,     XK_Delete,    spawn,          SHCMD("~/.local/bin/dwm/sysact") },
@@ -171,11 +170,6 @@ static Key keys[] = {
   { 0,                        XF86XK_AudioMute,          spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
   { 0,                        XF86XK_AudioRaiseVolume,   spawn,    SHCMD("pamixer --allow-boost -i 2; kill -44 $(pidof dwmblocks)") },
   { 0,                        XF86XK_AudioLowerVolume,   spawn,    SHCMD("pamixer --allow-boost -d 2; kill -44 $(pidof dwmblocks)") },
-
-  // mpc
-  { 0,                        XF86XK_AudioPrev,          spawn,    SHCMD("mpc prev") },
-  { 0,                        XF86XK_AudioNext,          spawn,    SHCMD("mpc next") },
-  { 0,                        XF86XK_AudioPlay,          spawn,    SHCMD("mpc pause") },
 
   // Screenshot
   { MODKEY,                   XK_Print,                  spawn,    ESHCMD("screenshot --all")},
@@ -205,36 +199,32 @@ static Key keys[] = {
   TAGKEYS(                    XK_9,                      8)
 };
 
-
-
 /* button definitions */
-/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
- * ClkClientWin, or ClkRootWin */
+/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
-/* click                event mask      button          function        argument
- */
+    /* click             event mask     button         function      argument */
 #ifndef __OpenBSD__
-    {ClkWinTitle,   0, Button2, zoom, {0}},
-    {ClkStatusText, 0, Button1, sigdwmblocks, {.i = 1}},
-    {ClkStatusText, 0, Button2, sigdwmblocks, {.i = 2}},
-    {ClkStatusText, 0, Button3, sigdwmblocks, {.i = 3}},
-    {ClkStatusText, 0, Button4, sigdwmblocks, {.i = 4}},
-    {ClkStatusText, 0, Button5, sigdwmblocks, {.i = 5}},
-    {ClkStatusText, ShiftMask, Button1, sigdwmblocks, {.i = 6}},
+    {ClkWinTitle,        0,             Button2,       zoom,         {0} },
+    {ClkStatusText,      0,             Button1,       sigdwmblocks, {.i = 1} },
+    {ClkStatusText,      0,             Button2,       sigdwmblocks, {.i = 2} },
+    {ClkStatusText,      0,             Button3,       sigdwmblocks, {.i = 3} },
+    {ClkStatusText,      0,             Button4,       sigdwmblocks, {.i = 4} },
+    {ClkStatusText,      0,             Button5,       sigdwmblocks, {.i = 5} },
+    {ClkStatusText,      ShiftMask,     Button1,       sigdwmblocks, {.i = 6} },
 #endif
     {ClkStatusText, ShiftMask, Button3, spawn,
      SHCMD(TERMINAL " -e nvim ~/.dots/suckless/dwmblocks/config.h")},
-    {ClkClientWin, MODKEY, Button1, movemouse, {0}},
-    {ClkClientWin, MODKEY, Button2, defaultgaps, {0}},
-    {ClkClientWin, MODKEY, Button3, resizemouse, {0}},
-    {ClkClientWin, MODKEY, Button4, incrgaps, {.i = +1}},
-    {ClkClientWin, MODKEY, Button5, incrgaps, {.i = -1}},
-    {ClkTagBar, 0, Button1, view, {0}},
-    {ClkTagBar, 0, Button3, toggleview, {0}},
-    {ClkTagBar, MODKEY, Button1, tag, {0}},
-    {ClkTagBar, MODKEY, Button3, toggletag, {0}},
-    {ClkTagBar, 0, Button4, shiftview, {.i = -1}},
-    {ClkTagBar, 0, Button5, shiftview, {.i = 1}},
-    {ClkRootWin, 0, Button2, togglebar, {0}},
+    {ClkClientWin,       MODKEY,        Button1,       movemouse,    {0} },
+    {ClkClientWin,       MODKEY,        Button2,       defaultgaps,  {0} },
+    {ClkClientWin,       MODKEY,        Button3,       resizemouse,  {0} },
+    {ClkClientWin,       MODKEY,        Button4,       incrgaps,     {.i = +1} },
+    {ClkClientWin,       MODKEY,        Button5,       incrgaps,     {.i = -1} },
+    {ClkTagBar,          0,             Button1,       view,         {0} },
+    {ClkTagBar,          0,             Button3,       toggleview,   {0} },
+    {ClkTagBar,          MODKEY,        Button1,       tag,          {0} },
+    {ClkTagBar,          MODKEY,        Button3,       toggletag,    {0} },
+    {ClkTagBar,          0,             Button4,       shiftview,    {.i = -1} },
+    {ClkTagBar,          0,             Button5,       shiftview,    {.i = 1} },
+    {ClkRootWin,         0,             Button2,       togglebar,    {0} },
 };
 
