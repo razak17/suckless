@@ -1,10 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
-/* Constants */
-#define TERMINAL "alacritty"
-#define TERMCLASS "alacritty"
+// Constants
+#define TERMINAL "st"
+#define TERMCLASS "St"
 
-/* appearance */
+// appearance
 static unsigned int borderpx  = 1;   // border pixel of windows */
 static unsigned int snap      = 32;  // snap pixel */
 static unsigned int gappih    = 7;   // horiz inner gap
@@ -15,55 +15,50 @@ static int swallowfloating    = 0;   // means swallow floating windows by defaul
 static int smartgaps          = 0;   // 1 means no outer gap when there is only one window */
 static int showbar            = 1;   // 0 means no bar */
 static int topbar             = 1;   // 0 means bottom bar */
-static const char *fonts[]          = { "Operator Mono Lig Book:size=9",
-                                 "JoyPixels:pixelsize=9:antialias=true:autohint=true"};
+static const char *fonts[]    = { "Operator Mono Lig Book:size=9","JoyPixels:pixelsize=9:antialias=true:autohint=true"};
 static const char dmenufont[] = "Operator Mono Lig Book:size=8";
-static char col_gray1[]       = "#222222";
-static char col_gray2[]       = "#444444";
-static char col_gray3[]       = "#bbbbbb";
-static char col_gray4[]       = "#030303";
-static char col_cyan[]        = "#7ec0ee";
-static char *colors[][3]      = {
-  /*               fg         bg         border   */
-  [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-  [SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-};
 
-/* tagging */
-// static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7" };
+#include "/home/razak/.cache/wal/colors-wal-dwm.h"
+
+// tagging
 static const char *tags[] = {"💡", "📺", "📚", "📂", "🌍", "🖥️","🌍"};
-// static const char *tags[] = {"🐧🌍","📺", "", "📺","","🖥", "", " 🕝"};
-// static const char *tags[] = {"🕹", "📰","✍️", "🔍", "💀", "👷",
 
 static const Rule rules[] = {
   /* xprop(1):
    *  WM_CLASS(STRING) = instance, class
    *  WM_NAME(STRING) = title
-   */
-  /* class      instance    title       tags mask     isfloating   monitor */
-  { "Gimp",     NULL,       NULL,       0,            1,           -1 },
-  { "Firefox",  NULL,       NULL,       1 << 7,       0,           -1 },
+  */
+  /* class       instance     title             tags mask     isfloating  isterminal  noswallow monitor */
+  { "Gimp",      NULL,        NULL,             1 << 6,       0,           0,         0,        -1 },
+  { "Thunar",    NULL,        NULL,             1 << 3,       0,           0,         0,        -1 },
+  { "Brave",     NULL,        NULL,             1 << 4,       0,           0,         0,        -1 },
+  { TERMCLASS,   NULL,        NULL,             1 << 5,       0,           1,         0,        -1 },
+  { "Alacritty", NULL,        NULL,             1 << 5,       0,           1,         0,        -1 },
+  { "St",        NULL,        NULL,             1 << 5,       0,           1,         0,        -1 },
+  { "kitty",     NULL,        NULL,             1 << 5,       0,           1,         0,        -1 },
+  { "firefox",   NULL,        NULL,             1 << 4,       0,           0,         0,        -1 },
+  { "Firefox",   NULL,        NULL,             1 << 4,       0,           0,         0,        -1 },
+  { NULL,        NULL,        "Event Tester",   0,            0,           0,         1,        -1 },
+  { NULL,        "notetaker", NULL,             SPTAG(0),     1,           1,         0,        -1 },
+  { NULL,        "spcalc",    NULL,             SPTAG(1),     1,           1,         0,        -1 },
 };
 
-/* layout(s) */
+// layout(s)
 static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static int nmaster     = 1;    /* number of clients in master area */
-static int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 #define FORCE_VSPLIT 1 // nrowgrid: force two clients to always split vertically
 #include "vanitygaps.c"
 static const Layout layouts[] = {
     /* symbol   arrange function */
-    {"[]=",     tile},   /* first entry is default */
-    {"TTT",     bstack}, /* Master on top, slaves on bottom */
-    {"###",     nrowgrid},
-
-    {"[@]",     spiral},   /* Fibonacci spiral */
-    {"[\\]",    dwindle}, /* Decreasing in size right and leftward */
-
-    {"[D]",     deck},    /* Master on left, slaves in monocle-like mode on right */
-    {"[M]",     monocle}, /* All windows on top of eachother */
-
+    {"[]=",     tile},                   /* first entry is default */
+    {"TTT",     bstack},                 /* Master on top, slaves on bottom */
+    {"###",     nrowgrid},               /* Grid */
+    {"[@]",     spiral},                 /* Fibonacci spiral */
+    {"[\\]",    dwindle},                /* Decreasing in size right and leftward */
+    {"[D]",     deck},                   /* Master on left, slaves in monocle-like mode on right */
+    {"[M]",     monocle},                /* All windows on top of eachother */
     {"|M|",     centeredmaster},         /* Master in middle, slaves on sides */
     {">M>",     centeredfloatingmaster}, /* Same but master floats */
 
@@ -71,7 +66,7 @@ static const Layout layouts[] = {
     {NULL,      NULL},
 };
 
-/* key definitions */
+// key definitions
 #define MODKEY Mod4Mask
 #define ALTMOD Mod1Mask
 #define TAGKEYS(KEY,TAG)                                                          \
@@ -80,22 +75,23 @@ static const Layout layouts[] = {
   { ControlMask|ALTMOD,           KEY,      tag,            {.ui = 1 << TAG} },   \
   { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
-/* helper for spawning shell commands in the pre dwm-5.0 fashion */
+// helper for spawning shell commands in the pre dwm-5.0 fashion
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 #define ESHCMD(cmd) SHCMD("exec " cmd)
 
-/* commands */
+// commands
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]         = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[]         = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont};
 static const char *termcmd[]          = { "alacritty", NULL };
 static const char *termcmdfill[]      = { "alacritty", "-o", "background_opacity=1.0", NULL };
-static const char *stcmd[]            = { "st", NULL };
-static const char *firefox[]          = { "firefox", NULL };
+// static const char *kittycmd[]         = { "kitty", NULL };
 static const char *filecmd[]          = { "thunar", NULL };
-static const char *lxcmd[]            = { "lxappearance", NULL };
+static const char *firefox[]          = { "firefox", NULL };
 static const char *authycmd[]         = { "authy", NULL };
-static const char *baobabcmd[]        = { "baobab", NULL };
 static const char *arcologoutcmd[]    = { "arcolinux-logout", NULL };
+static const char *stcmd[]            = { TERMINAL, NULL };
+static const char *termnotes[]        = { TERMINAL, "-n", "notetaker", "-g", "70x30", "-e", "notetaker", NULL };
+static const char *termcalc[]         = { TERMINAL, "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
 
 #include "shiftview.c"
 #include <X11/XF86keysym.h>
@@ -112,28 +108,28 @@ static Key keys[] = {
   { MODKEY,                   XK_Return,    spawn,          {.v = termcmd} },
   { ALTMOD,                   XK_Return,    spawn,          {.v = termcmdfill} },
   { ALTMOD | ShiftMask,       XK_Return,    spawn,          {.v = stcmd} },
-  { CMOD,                     XK_g,         spawn,          {.v = lxcmd} },
-  { CMOD,                     XK_b,         spawn,          {.v = baobabcmd} },
+  { SMOD,                     XK_c,         spawn,          {.v = termcalc} },
+  { MODKEY,                   XK_semicolon, spawn,          {.v = termnotes} },
   { AMOD,                     XK_l,         spawn,          {.v = authycmd} },
   { CMOD,                     XK_l,         spawn,          {.v = arcologoutcmd} },
+  // { ControlMask | ShiftMask,  XK_Return,    spawn,          {.v = kittycmd} },
   { SMOD,                     XK_b,         togglebar,      {0} },
   { MODKEY,                   XK_p,         focusstack,     {.i = +1 } },
   { MODKEY,                   XK_k,         focusstack,     {.i = -1 } },
-  { CMOD,                     XK_h,         incnmaster,     {.i = +1 } },
-  { CMOD,                     XK_v,         incnmaster,     {.i = -1 } },
+  { CMOD,                     XK_v,         incnmaster,     {.i = +1 } },
+  { CMOD,                     XK_h,         incnmaster,     {.i = -1 } },
   { MODKEY,                   XK_h,         setmfact,       {.f = -0.05} },
   { MODKEY,                   XK_l,         setmfact,       {.f = +0.05} },
-  { CMOD,                     XK_Return,    zoom,           {0} },
-  { MODKEY,                   XK_Tab,       view,           {0} },
+  { MODKEY,                   XK_Tab,       view,           {1} },
+  { CMOD,                     XK_n,         view,           {0} },
+  { MODKEY,                   XK_0,         view,           {.ui = ~0 } },
+  { ALTMOD | ShiftMask,       XK_0,         tag,            {.ui = ~0 } },
   { MODKEY,                   XK_x,         killclient,     {0} },
   { CMOD,                     XK_e,         quit,           {0} },
-  { MODKEY,                   XK_0,         view,           {.ui = ~0 } },
-  { AMOD,                     XK_0,         tag,            {.ui = ~0 } },
   { MODKEY,                   XK_comma,     focusmon,       {.i = -1 } },
   { MODKEY,                   XK_period,    focusmon,       {.i = +1 } },
   { SMOD,                     XK_comma,     tagmon,         {.i = -1 } },
   { SMOD,                     XK_period,    tagmon,         {.i = +1 } },
-  { MODKEY,                   XK_semicolon, spawn,          SHCMD("skippy-xd") },
 
   // Gaps
   { CMOD,                     XK_a,         togglegaps,     {1} },
@@ -142,29 +138,26 @@ static Key keys[] = {
   { CMOD,                     XK_d,         incrgaps,       {.i = -1} },
 
   // Layout
-  { MODKEY,                   XK_e,         setlayout,      {.v = &layouts[0]} }, // tile
-  { SMOD,                     XK_e,         setlayout,      {.v = &layouts[1]} }, // bstack
-  { SMOD,                     XK_u,         setlayout,      {.v = &layouts[2]} }, // nrowgrid
-  { SMOD,                     XK_p,         setlayout,      {.v = &layouts[3]} }, // spiral
-  { MODKEY,                   XK_q,         setlayout,      {.v = &layouts[4]} }, // dwindle
-  { SMOD,                     XK_n,         setlayout,      {.v = &layouts[5]} }, // deck
-  { MODKEY,                   XK_y,         setlayout,      {.v = &layouts[6]} }, // monocle
-  { SMOD,                     XK_y,         setlayout,      {.v = &layouts[7]} }, // cmaster
-  { MODKEY,                   XK_f,         setlayout,      {.v = &layouts[8]} }, // floating cmaster
+  { MODKEY,                   XK_e,         setlayout,      {.v = &layouts[0]} },
+  { SMOD,                     XK_e,         setlayout,      {.v = &layouts[1]} },
+  { SMOD,                     XK_u,         setlayout,      {.v = &layouts[2]} },
+  { SMOD,                     XK_p,         setlayout,      {.v = &layouts[3]} },
+  { MODKEY,                   XK_q,         setlayout,      {.v = &layouts[4]} },
+  { SMOD,                     XK_n,         setlayout,      {.v = &layouts[5]} },
+  { MODKEY,                   XK_y,         setlayout,      {.v = &layouts[6]} },
+  { SMOD,                     XK_y,         setlayout,      {.v = &layouts[7]} },
+  { MODKEY,                   XK_f,         setlayout,      {.v = &layouts[8]} },
+  { SMOD,                     XK_f,         setlayout,      {.v = &layouts[9]} },
   { MODKEY,                   XK_space,     setlayout,      {0} },
   { SMOD,                     XK_space,     togglefloating, {0} },
   { SMOD,                     XK_h,         cyclelayout,    {.i = -1} },
   { SMOD,                     XK_l,         cyclelayout,    {.i = +1} },
   { MODKEY,                   XK_f,         togglefullscr,  {0} },
-  { ALTMOD,                   XK_b,         spawn,          SHCMD("~/.local/bin/dwm/wal") },
+  { MODKEY,                   XK_z,         zoom,           {0} },
 
-  // shiftview
+  // Shiftview
   { MODKEY,                   XK_n,         shiftview,      {.i = 1} },
   { MODKEY,                   XK_b,         shiftview,      {.i = -1} },
-  { ALTMOD | ControlMask,     XK_k,         shiftview,      {.i = 1} } ,
-  { ALTMOD | ControlMask,     XK_n,         shiftview,      {.i = -1} },
-  { ALTMOD | ControlMask,     XK_Delete,    spawn,          SHCMD("~/.local/bin/dwm/sysact") },
-
 
   // Audio
   { 0,                        XF86XK_AudioMute,          spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
@@ -188,6 +181,10 @@ static Key keys[] = {
   { 0,                        XF86XK_TouchpadOff,        spawn,    SHCMD("synclient TouchpadOff=1") },
   { 0,                        XF86XK_TouchpadOn,         spawn,    SHCMD("synclient TouchpadOff=0") },
 
+  // Utils
+  { ALTMOD,                   XK_b,                      spawn,    ESHCMD("iwal") },
+  { ALTMOD | ControlMask,     XK_Delete,                 spawn,    ESHCMD("sysact") },
+
   TAGKEYS(                    XK_o,                      0)
   TAGKEYS(                    XK_2,                      1)
   TAGKEYS(                    XK_i,                      2)
@@ -199,7 +196,7 @@ static Key keys[] = {
   TAGKEYS(                    XK_9,                      8)
 };
 
-/* button definitions */
+// button definitions
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
     /* click             event mask     button         function      argument */
