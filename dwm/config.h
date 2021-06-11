@@ -20,6 +20,21 @@ static const char dmenufont[] = "Operator Mono Lig Book:size=8";
 
 #include "/home/razak/.cache/wal/colors-wal-dwm.h"
 
+typedef struct {
+  const char *name;
+  const void *cmd;
+} Sp;
+const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd2[] = {TERMINAL, "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
+const char *spcmd3[]        = { TERMINAL, "-n", "notetaker", "-g", "70x30", "-e", "notetaker", NULL };
+static Sp scratchpads[] = {
+  /* name          cmd  */
+  {"spterm",      spcmd1},
+  {"spcalc",      spcmd2},
+  {"spnotes",     spcmd3},
+};
+
+
 // tagging
 static const char *tags[] = {"💡", "📺", "📚", "📂", "🌍", "🖥️","🌍"};
 
@@ -90,8 +105,6 @@ static const char *firefox[]          = { "firefox", NULL };
 static const char *authycmd[]         = { "authy", NULL };
 static const char *arcologoutcmd[]    = { "arcolinux-logout", NULL };
 static const char *stcmd[]            = { TERMINAL, NULL };
-static const char *termnotes[]        = { TERMINAL, "-n", "notetaker", "-g", "70x30", "-e", "notetaker", NULL };
-static const char *termcalc[]         = { TERMINAL, "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
 
 #include "shiftview.c"
 #include <X11/XF86keysym.h>
@@ -109,8 +122,6 @@ static Key keys[] = {
   { MODKEY,                   XK_Return,    spawn,          {.v = termcmd} },
   { ALTMOD,                   XK_Return,    spawn,          {.v = termcmdfill} },
   { ALTMOD | ShiftMask,       XK_Return,    spawn,          {.v = stcmd} },
-  { SMOD,                     XK_c,         spawn,          {.v = termcalc} },
-  { MODKEY,                   XK_semicolon, spawn,          {.v = termnotes} },
   { AMOD,                     XK_l,         spawn,          {.v = authycmd} },
   { CMOD,                     XK_l,         spawn,          {.v = arcologoutcmd} },
   // { ControlMask | ShiftMask,  XK_Return,    spawn,          {.v = kittycmd} },
@@ -163,6 +174,12 @@ static Key keys[] = {
   // Move stack
   { MODKEY|ShiftMask,        XK_n,          movestack,      {.i = +1 } },
   { MODKEY|ShiftMask,        XK_k,          movestack,      {.i = -1 } },
+
+  // Scrapads
+  { MODKEY,                 XK_apostrophe,           togglescratch,  {.ui = 0 } },
+  { MODKEY,                 XK_m,           togglescratch,  {.ui = 1 } },
+  { MODKEY,                 XK_semicolon,   togglescratch,  {.ui = 2 } },
+
 
   // Audio
   { 0,                        XF86XK_AudioMute,          spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
@@ -218,7 +235,7 @@ static Button buttons[] = {
      SHCMD(TERMINAL " -e nvim ~/.dots/suckless/dwmblocks/config.h")},
     {ClkClientWin,       MODKEY,        Button1,       movemouse,    {0} },
     {ClkClientWin,       MODKEY,        Button2,       defaultgaps,  {0} },
-    {ClkClientWin,       MODKEY,        Button3,       resizemouse,  {0} },
+    {ClkClientWin,       MODKEY,        Button1,       resizemouse,  {0} },
     {ClkClientWin,       MODKEY,        Button4,       incrgaps,     {.i = +1} },
     {ClkClientWin,       MODKEY,        Button5,       incrgaps,     {.i = -1} },
     {ClkTagBar,          0,             Button1,       view,         {0} },
