@@ -26,7 +26,7 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd2[] = {TERMINAL, "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
-const char *spcmd3[]        = { TERMINAL, "-n", "notetaker", "-g", "70x30", "-e", "notetaker", NULL };
+const char *spcmd3[]   = {TERMINAL, "-n", "notetaker", "-g", "70x30", "-e", "notetaker", NULL };
 static Sp scratchpads[] = {
   /* name          cmd  */
   {"spterm",      spcmd1},
@@ -176,7 +176,7 @@ static Key keys[] = {
   { MODKEY|ShiftMask,        XK_k,          movestack,      {.i = -1 } },
 
   // Scrapads
-  { MODKEY,                 XK_apostrophe,           togglescratch,  {.ui = 0 } },
+  { MODKEY,                 XK_apostrophe,  togglescratch,  {.ui = 0 } },
   { MODKEY,                 XK_m,           togglescratch,  {.ui = 1 } },
   { MODKEY,                 XK_semicolon,   togglescratch,  {.ui = 2 } },
 
