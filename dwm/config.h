@@ -100,6 +100,7 @@ static const char *termcalc[]         = { TERMINAL, "-n", "spcalc", "-f", "monos
 #define SMOD MODKEY | ShiftMask
 #define AMOD MODKEY | ALTMOD
 
+#include "movestack.c"
 static Key keys[] = {
   /* modifier                 key        function        argument */
   { MODKEY,                   XK_d,         spawn,          {.v = dmenucmd} },
@@ -143,7 +144,7 @@ static Key keys[] = {
   { SMOD,                     XK_u,         setlayout,      {.v = &layouts[2]} },
   { SMOD,                     XK_p,         setlayout,      {.v = &layouts[3]} },
   { MODKEY,                   XK_q,         setlayout,      {.v = &layouts[4]} },
-  { SMOD,                     XK_n,         setlayout,      {.v = &layouts[5]} },
+  { SMOD,                     XK_d,         setlayout,      {.v = &layouts[5]} },
   { MODKEY,                   XK_y,         setlayout,      {.v = &layouts[6]} },
   { SMOD,                     XK_y,         setlayout,      {.v = &layouts[7]} },
   { MODKEY,                   XK_f,         setlayout,      {.v = &layouts[8]} },
@@ -158,6 +159,10 @@ static Key keys[] = {
   // Shiftview
   { MODKEY,                   XK_n,         shiftview,      {.i = 1} },
   { MODKEY,                   XK_b,         shiftview,      {.i = -1} },
+
+  // Move stack
+  { MODKEY|ShiftMask,        XK_n,          movestack,      {.i = +1 } },
+  { MODKEY|ShiftMask,        XK_k,          movestack,      {.i = -1 } },
 
   // Audio
   { 0,                        XF86XK_AudioMute,          spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
