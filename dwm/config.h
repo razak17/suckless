@@ -5,7 +5,7 @@
 #define TERMCLASS "St"
 
 // appearance
-static unsigned int borderpx  = 1;   // border pixel of windows */
+static unsigned int borderpx  = 2;   // border pixel of windows */
 static unsigned int snap      = 32;  // snap pixel */
 static unsigned int gappih    = 7;   // horiz inner gap
 static unsigned int gappiv    = 7;   // vert inner gap
@@ -15,6 +15,7 @@ static int swallowfloating    = 0;   // means swallow floating windows by defaul
 static int smartgaps          = 0;   // 1 means no outer gap when there is only one window */
 static int showbar            = 1;   // 0 means no bar */
 static int topbar             = 1;   // 0 means bottom bar */
+static const Bool viewontag  = True;
 static const char *fonts[]    = { "Operator Mono Lig Book:size=9","JoyPixels:pixelsize=9:antialias=true:autohint=true"};
 static const char dmenufont[] = "Operator Mono Lig Book:size=8";
 
@@ -24,7 +25,7 @@ typedef struct {
   const char *name;
   const void *cmd;
 } Sp;
-const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "82x34", NULL };
 const char *spcmd2[] = {TERMINAL, "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
 const char *spcmd3[]   = {TERMINAL, "-n", "notetaker", "-g", "70x30", "-e", "notetaker", NULL };
 static Sp scratchpads[] = {
@@ -36,26 +37,26 @@ static Sp scratchpads[] = {
 
 
 // tagging
-static const char *tags[] = {"💡", "📺", "📚", "📂", "🌍", "🖥️","🌍"};
+static const char *tags[] = {"💡", "📺", "📚", "📂", "🖥️","🌍"};
 
 static const Rule rules[] = {
   /* xprop(1):
    *  WM_CLASS(STRING) = instance, class
    *  WM_NAME(STRING) = title
   */
-  /* class       instance     title             tags mask     isfloating  isterminal  noswallow monitor */
-  { "Gimp",      NULL,        NULL,             1 << 6,       0,           0,         0,        -1 },
-  { "Thunar",    NULL,        NULL,             1 << 3,       0,           0,         0,        -1 },
-  { "Brave",     NULL,        NULL,             1 << 4,       0,           0,         0,        -1 },
-  { TERMCLASS,   NULL,        NULL,             1 << 5,       0,           1,         0,        -1 },
-  { "Alacritty", NULL,        NULL,             1 << 5,       0,           1,         0,        -1 },
-  { "St",        NULL,        NULL,             1 << 5,       0,           1,         0,        -1 },
-  { "kitty",     NULL,        NULL,             1 << 5,       0,           1,         0,        -1 },
-  { "firefox",   NULL,        NULL,             1 << 4,       0,           0,         0,        -1 },
-  { "Firefox",   NULL,        NULL,             1 << 4,       0,           0,         0,        -1 },
-  { NULL,        NULL,        "Event Tester",   0,            0,           0,         1,        -1 },
-  { NULL,        "notetaker", NULL,             SPTAG(0),     1,           1,         0,        -1 },
-  { NULL,        "spcalc",    NULL,             SPTAG(1),     1,           1,         0,        -1 },
+  /* class         instance     title             tags mask     isfloating  isterminal  noswallow monitor */
+  { "autokey",     NULL,        NULL,             1 << 0,       0,           0,         0,        -1 },
+  { "mpv",         NULL,        NULL,             1 << 1,       0,           0,         0,        -1 },
+  { "discord",     NULL,        NULL,             1 << 1,       0,           0,         0,        -1 },
+  { "Thunderbird", NULL,        NULL,             1 << 2,       0,           0,         0,        -1 },
+  { "Thunar",      NULL,        NULL,             1 << 3,       0,           0,         0,        -1 },
+  { "Gimp",        NULL,        NULL,             1 << 5,       0,           0,         0,        -1 },
+  { "Brave",       NULL,        NULL,             1 << 5,       0,           0,         0,        -1 },
+  { "firefox",     NULL,        NULL,             1 << 5,       0,           0,         0,        -1 },
+  { NULL,          NULL,        "Event Tester",   0,            0,           0,         1,        -1 },
+  { NULL,          "spterm",    NULL,             SPTAG(0),     1,           1,         0,        -1 },
+  { NULL,          "spcalc",    NULL,             SPTAG(1),     1,           1,         0,        -1 },
+  { NULL,          "notetaker", NULL,             SPTAG(2),     1,           1,         0,        -1 },
 };
 
 // layout(s)
@@ -75,20 +76,19 @@ static const Layout layouts[] = {
     {"[D]",     deck},                   /* Master on left, slaves in monocle-like mode on right */
     {"[M]",     monocle},                /* All windows on top of eachother */
     {"|M|",     centeredmaster},         /* Master in middle, slaves on sides */
-    {">M>",     centeredfloatingmaster}, /* Same but master floats */
-
-    {"><>",     NULL}, /* no layout function means floating behavior */
+    {">M>",     centeredfloatingmaster}, /* Same as above but master floats */
+    {"><>",     NULL},                   /* no layout function means floating behavior */
     {NULL,      NULL},
 };
 
 // key definitions
 #define MODKEY Mod4Mask
 #define ALTMOD Mod1Mask
-#define TAGKEYS(KEY,TAG)                                                          \
-  { MODKEY,                       KEY,      view,           {.ui = 1 << TAG} },   \
-  { MODKEY|ALTMOD,                KEY,      toggleview,     {.ui = 1 << TAG} },   \
-  { ControlMask|ALTMOD,           KEY,      tag,            {.ui = 1 << TAG} },   \
-  { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+#define TAGKEYS(KEY,TAG)                                                        \
+  { MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+  { ControlMask|ALTMOD,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+  { ALTMOD,                       KEY,      tag,            {.ui = 1 << TAG} }, \
+  { MODKEY|ALTMOD,                KEY,      toggletag,      {.ui = 1 << TAG} },
 
 // helper for spawning shell commands in the pre dwm-5.0 fashion
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -97,14 +97,14 @@ static const Layout layouts[] = {
 // commands
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]         = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont};
+static const char *firefox[]          = { "firefox", NULL };
+static const char *filecmd[]          = { "thunar", NULL };
+static const char *mailcmd[]          = { "thunderbird", NULL };
 static const char *termcmd[]          = { "alacritty", NULL };
 static const char *termcmdfill[]      = { "alacritty", "-o", "background_opacity=1.0", NULL };
-// static const char *kittycmd[]         = { "kitty", NULL };
-static const char *filecmd[]          = { "thunar", NULL };
-static const char *firefox[]          = { "firefox", NULL };
-static const char *authycmd[]         = { "authy", NULL };
-static const char *arcologoutcmd[]    = { "arcolinux-logout", NULL };
+static const char *kittycmd[]         = { "kitty", NULL };
 static const char *stcmd[]            = { TERMINAL, NULL };
+static const char *autokeycmd[]       = { "autokey-gtk", NULL };
 
 #include "shiftview.c"
 #include <X11/XF86keysym.h>
@@ -119,12 +119,12 @@ static Key keys[] = {
   { MODKEY,                   XK_d,         spawn,          {.v = dmenucmd} },
   { MODKEY,                   XK_w,         spawn,          {.v = firefox} },
   { SMOD,                     XK_Return,    spawn,          {.v = filecmd} },
+  { SMOD,                     XK_m,         spawn,          {.v = mailcmd} },
   { MODKEY,                   XK_Return,    spawn,          {.v = termcmd} },
   { ALTMOD,                   XK_Return,    spawn,          {.v = termcmdfill} },
+  { ControlMask | ShiftMask,  XK_Return,    spawn,          {.v = kittycmd} },
   { ALTMOD | ShiftMask,       XK_Return,    spawn,          {.v = stcmd} },
-  { AMOD,                     XK_l,         spawn,          {.v = authycmd} },
-  { CMOD,                     XK_l,         spawn,          {.v = arcologoutcmd} },
-  // { ControlMask | ShiftMask,  XK_Return,    spawn,          {.v = kittycmd} },
+  { ControlMask | ShiftMask,  XK_k,         spawn,          {.v = autokeycmd} },
   { SMOD,                     XK_b,         togglebar,      {0} },
   { MODKEY,                   XK_p,         focusstack,     {.i = +1 } },
   { MODKEY,                   XK_k,         focusstack,     {.i = -1 } },
@@ -194,7 +194,6 @@ static Key keys[] = {
   // Power
   { 0,                        XF86XK_Sleep,              spawn,    ESHCMD("lock-sleep")},
   { 0,                        XF86XK_PowerOff,           spawn,    SHCMD("sysact")},
-  { 0,                        XF86XK_PowerDown,          spawn,    SHCMD("arcolinux-logout")},
 
   // Brightness
   { 0,                        XF86XK_MonBrightnessUp,    spawn,    SHCMD("brightnessctl set 100+") },
@@ -204,8 +203,8 @@ static Key keys[] = {
   { 0,                        XF86XK_TouchpadOn,         spawn,    SHCMD("synclient TouchpadOff=0") },
 
   // Utils
-  { ALTMOD,                   XK_b,                      spawn,    ESHCMD("iwal") },
   { ALTMOD | ControlMask,     XK_Delete,                 spawn,    ESHCMD("sysact") },
+  { CMOD,                     XK_l,                      spawn,    ESHCMD("sysact") },
 
   TAGKEYS(                    XK_o,                      0)
   TAGKEYS(                    XK_2,                      1)

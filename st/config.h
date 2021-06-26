@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Operator Mono Lig Book:pixelsize=12:antialias=true:autohint=true";
+static char *font = "Operator Mono Lig Book:size=9";
 static char *font2[] = { "JoyPixels:pixelsize=10:antialias=true:autohint=true" };
 static int borderpx = 2;
 
