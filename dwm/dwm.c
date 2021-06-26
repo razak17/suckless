@@ -135,6 +135,7 @@ struct Client {
   int basew, baseh, incw, inch, maxw, maxh, minw, minh;
   int bw, oldbw;
   unsigned int tags;
+  unsigned int switchtotag;
   int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen,
       isterminal, noswallow, issticky;
   pid_t pid;
@@ -189,6 +190,7 @@ typedef struct {
   const char *instance;
   const char *title;
   unsigned int tags;
+  unsigned int switchtotag;
   int isfloating;
   int isterminal;
   int noswallow;
@@ -400,10 +402,14 @@ void applyrules(Client *c) {
         c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2);
       }
 
-      for (m = mons; m && m->num != r->monitor; m = m->next)
-        ;
+      for (m = mons; m && m->num != r->monitor; m = m->next);
       if (m)
         c->mon = m;
+      if (r->switchtotag) {
+        Arg a = { .ui = r->tags };
+        c->switchtotag = selmon->tagset[selmon->seltags];
+        view(&a);
+      }
     }
   }
   if (ch.res_class)
@@ -2012,9 +2018,13 @@ void unmanage(Client *c, int destroyed) {
   free(c);
 
   if (!s) {
-    arrange(m);
     focus(NULL);
     updateclientlist();
+    arrange(m);
+    if (c->switchtotag) {
+      Arg a = { .ui = c->switchtotag };
+      view(&a);
+    }
   }
 }
 

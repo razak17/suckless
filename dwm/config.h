@@ -44,19 +44,18 @@ static const Rule rules[] = {
    *  WM_CLASS(STRING) = instance, class
    *  WM_NAME(STRING) = title
   */
-  /* class         instance     title             tags mask     isfloating  isterminal  noswallow monitor */
-  { "autokey",     NULL,        NULL,             1 << 0,       0,           0,         0,        -1 },
-  { "mpv",         NULL,        NULL,             1 << 1,       0,           0,         0,        -1 },
-  { "discord",     NULL,        NULL,             1 << 1,       0,           0,         0,        -1 },
-  { "Thunderbird", NULL,        NULL,             1 << 2,       0,           0,         0,        -1 },
-  { "Thunar",      NULL,        NULL,             1 << 3,       0,           0,         0,        -1 },
-  { "Gimp",        NULL,        NULL,             1 << 5,       0,           0,         0,        -1 },
-  { "Brave",       NULL,        NULL,             1 << 5,       0,           0,         0,        -1 },
-  { "firefox",     NULL,        NULL,             1 << 5,       0,           0,         0,        -1 },
-  { NULL,          NULL,        "Event Tester",   0,            0,           0,         1,        -1 },
-  { NULL,          "spterm",    NULL,             SPTAG(0),     1,           1,         0,        -1 },
-  { NULL,          "spcalc",    NULL,             SPTAG(1),     1,           1,         0,        -1 },
-  { NULL,          "notetaker", NULL,             SPTAG(2),     1,           1,         0,        -1 },
+  /* class         instance     title   tags mask  switchtotags  isfloating  isterminal  noswallow monitor */
+  { "autokey",     NULL,        NULL,   1 << 0,    0,            0,          0,          0,        -1 },
+  { "mpv",         NULL,        NULL,   1 << 1,    0,            0,          0,          0,        -1 },
+  { "discord",     NULL,        NULL,   1 << 1,    0,            0,          0,          0,        -1 },
+  { "Thunderbird", NULL,        NULL,   1 << 2,    0,            0,          0,          0,        -1 },
+  { "Thunar",      NULL,        NULL,   1 << 3,    1,            0,          0,          0,        -1 },
+  { "Gimp",        NULL,        NULL,   1 << 5,    0,            0,          0,          0,        -1 },
+  { "Brave",       NULL,        NULL,   1 << 5,    0,            0,          0,          0,        -1 },
+  { "firefox",     NULL,        NULL,   1 << 5,    0,            0,          0,          0,        -1 },
+  { NULL,          "spterm",    NULL,   SPTAG(0),  1,            1,          1,          0,        -1 },
+  { NULL,          "spcalc",    NULL,   SPTAG(1),  1,            1,          1,          0,        -1 },
+  { NULL,          "notetaker", NULL,   SPTAG(2),  1,            1,          1,          0,        -1 },
 };
 
 // layout(s)
