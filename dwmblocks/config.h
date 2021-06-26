@@ -3,14 +3,15 @@
 static const Block blocks[] = {
  /* Icon          Command             Update Interval     Update Signal */
 
+    {" ",          "dt-kernel",          0,                   21},
     {" 📦 ",      "sb-pacpackages",   360,                    8},
-    {" ",         "sb-cpusage",       10,                   18},
-    {"",          "sb-memory",        12,                   26},
-    {"",          "sb-swap",          37,                    2},
-    {"",          "sb-volume",        0,                   10},
-    {"",          "sb-battery",      17,                    3},
-    {"",          "sb-internet",      3,                    4},
-    {"",          "sb-clock",        60,                    5},
+    {" ",         "sb-cpusage",        10,                   18},
+    {"",          "sb-memory",         12,                   26},
+    {"",          "sb-swap",           37,                    2},
+    {"",          "sb-volume",          0,                   10},
+    {"",          "sb-battery",        17,                    3},
+    {"",          "sb-internet",        3,                    4},
+    {"",          "sb-clock",          60,                    5},
     // {"📦 ",       "sb-installed",     0,                   17},
     // {"",          "sb-disk",         10,                   21},
     // {"",          "sb-nettraf",       1,                   16},
