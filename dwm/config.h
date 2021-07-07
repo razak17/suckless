@@ -27,7 +27,7 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "82x34", NULL };
 const char *spcmd2[] = {TERMINAL, "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
-const char *spcmd3[]   = {TERMINAL, "-n", "notetaker", "-g", "70x30", "-e", "notetaker", NULL };
+const char *spcmd3[]   = {TERMINAL, "-n", "inotetaker", "-g", "70x30", "-e", "inotetaker", NULL };
 static Sp scratchpads[] = {
   /* name          cmd  */
   {"spterm",      spcmd1},
@@ -37,26 +37,27 @@ static Sp scratchpads[] = {
 
 
 // tagging
-static const char *tags[] = {"💡", "📺", "📚", "📂", "🖥️","🌍"};
+static const char *tags[] = {"💡", "📚", "📺", "📂", "🖥️","🌍"};
 
 static const Rule rules[] = {
   /* xprop(1):
    *  WM_CLASS(STRING) = instance, class
    *  WM_NAME(STRING) = title
   */
-  /* class         instance     title             tags mask     isfloating  isterminal  noswallow monitor */
-  { "autokey",     NULL,        NULL,             1 << 0,       0,           0,         0,        -1 },
-  { "mpv",         NULL,        NULL,             1 << 1,       0,           0,         0,        -1 },
-  { "discord",     NULL,        NULL,             1 << 1,       0,           0,         0,        -1 },
-  { "Thunderbird", NULL,        NULL,             1 << 2,       0,           0,         0,        -1 },
-  { "Thunar",      NULL,        NULL,             1 << 3,       0,           0,         0,        -1 },
-  { "Gimp",        NULL,        NULL,             1 << 5,       0,           0,         0,        -1 },
-  { "Brave",       NULL,        NULL,             1 << 5,       0,           0,         0,        -1 },
-  { "firefox",     NULL,        NULL,             1 << 5,       0,           0,         0,        -1 },
-  { NULL,          NULL,        "Event Tester",   0,            0,           0,         1,        -1 },
-  { NULL,          "spterm",    NULL,             SPTAG(0),     1,           1,         0,        -1 },
-  { NULL,          "spcalc",    NULL,             SPTAG(1),     1,           1,         0,        -1 },
-  { NULL,          "notetaker", NULL,             SPTAG(2),     1,           1,         0,        -1 },
+  /* class         instance      title             tags mask     isfloating  isterminal  noswallow monitor */
+  { "autokey",     NULL,         NULL,             1 << 0,       0,           0,         0,        -1 },
+  { "Gimp",        NULL,         NULL,             1 << 0,       0,           0,         0,        -1 },
+  { "Thunderbird", NULL,         NULL,             1 << 1,       0,           0,         0,        -1 },
+  { "discord",     NULL,         NULL,             1 << 2,       0,           0,         0,        -1 },
+  { "mpv",         NULL,         NULL,             1 << 2,       0,           0,         0,        -1 },
+  { "Genymotion",  NULL,         NULL,             1 << 2,       0,           0,         0,        -1 },
+  { "Thunar",      NULL,         NULL,             1 << 3,       0,           0,         0,        -1 },
+  { "Brave",       NULL,         NULL,             1 << 5,       0,           0,         0,        -1 },
+  { "firefox",     NULL,         NULL,             1 << 5,       0,           0,         0,        -1 },
+  { NULL,          NULL,         "Event Tester",   0,            0,           0,         1,        -1 },
+  { NULL,          "spterm",     NULL,             SPTAG(0),     1,           1,         0,        -1 },
+  { NULL,          "spcalc",     NULL,             SPTAG(1),     1,           1,         0,        -1 },
+  { NULL,          "inotetaker", NULL,             SPTAG(2),     1,           1,         0,        -1 },
 };
 
 // layout(s)
@@ -97,7 +98,7 @@ static const Layout layouts[] = {
 // commands
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]         = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont};
-static const char *firefox[]          = { "firefox", NULL };
+static const char *firefox[]          = { "ifirefox", NULL };
 static const char *filecmd[]          = { "thunar", NULL };
 static const char *mailcmd[]          = { "thunderbird", NULL };
 static const char *termcmd[]          = { "alacritty", NULL };
@@ -212,9 +213,9 @@ static Key keys[] = {
   TAGKEYS(                    XK_4,                      3)
   TAGKEYS(                    XK_5,                      4)
   TAGKEYS(                    XK_6,                      5)
-  TAGKEYS(                    XK_7,                      6)
+  /* TAGKEYS(                    XK_7,                      6)
   TAGKEYS(                    XK_8,                      7)
-  TAGKEYS(                    XK_9,                      8)
+  TAGKEYS(                    XK_9,                      8) */
 };
 
 // button definitions
