@@ -127,14 +127,14 @@ static Key keys[] = {
   { ALTMOD | ShiftMask,       XK_Return,    spawn,          {.v = stcmd} },
   { ControlMask | ShiftMask,  XK_k,         spawn,          {.v = autokeycmd} },
   { SMOD,                     XK_b,         togglebar,      {0} },
-  { MODKEY,                   XK_p,         focusstack,     {.i = +1 } },
+  { MODKEY,                   XK_j,         focusstack,     {.i = +1 } },
   { MODKEY,                   XK_k,         focusstack,     {.i = -1 } },
   { CMOD,                     XK_v,         incnmaster,     {.i = +1 } },
   { CMOD,                     XK_h,         incnmaster,     {.i = -1 } },
   { MODKEY,                   XK_h,         setmfact,       {.f = -0.05} },
   { MODKEY,                   XK_l,         setmfact,       {.f = +0.05} },
   { MODKEY,                   XK_Tab,       view,           {1} },
-  { CMOD,                     XK_n,         view,           {0} },
+  { MODKEY,                  XK_p,         view,           {0} },
   { MODKEY,                   XK_0,         view,           {.ui = ~0 } },
   { ALTMOD | ShiftMask,       XK_0,         tag,            {.ui = ~0 } },
   { MODKEY,                   XK_x,         killclient,     {0} },
@@ -184,6 +184,7 @@ static Key keys[] = {
 
   // Audio
   { 0,                        XF86XK_AudioMute,          spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+  { CMOD,                     XK_m,                      spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
   { 0,                        XF86XK_AudioRaiseVolume,   spawn,    SHCMD("pamixer --allow-boost -i 2; kill -44 $(pidof dwmblocks)") },
   { 0,                        XF86XK_AudioLowerVolume,   spawn,    SHCMD("pamixer --allow-boost -d 2; kill -44 $(pidof dwmblocks)") },
 
