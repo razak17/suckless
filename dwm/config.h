@@ -193,6 +193,10 @@ static Key keys[] = {
   { CMOD,                     XK_Print,                  spawn,    ESHCMD("screenshot --focused")},
   { 0,                        XK_Print,                  spawn,    ESHCMD("screenshot --select")},
 
+  // Clipboard
+  { ControlMask,              XK_grave,                  spawn,    ESHCMD("iclip -s")},
+  { ControlMask | ShiftMask,  XK_grave,                  spawn,    ESHCMD("iclip -l")},
+
   // Power
   { 0,                        XF86XK_Sleep,              spawn,    ESHCMD("lock-sleep")},
   { 0,                        XF86XK_PowerOff,           spawn,    SHCMD("sysact")},
