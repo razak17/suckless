@@ -4,7 +4,7 @@
 #define TERMINAL "st"
 #define TERMCLASS "St"
 
-// appearance
+// Appearance
 static unsigned int borderpx  = 2;   // border pixel of windows */
 static unsigned int snap      = 32;  // snap pixel */
 static unsigned int gappih    = 7;   // horiz inner gap
@@ -101,9 +101,9 @@ static const char *dmenucmd[]         = { "dmenu_run", "-m", dmenumon, "-fn", dm
 static const char *firefox[]          = { "ifirefox", NULL };
 static const char *filecmd[]          = { "thunar", NULL };
 static const char *mailcmd[]          = { "thunderbird", NULL };
-static const char *termcmd[]          = { "alacritty", NULL };
-static const char *termcmdfill[]      = { "alacritty", "-o", "background_opacity=1.0", NULL };
-static const char *kittycmd[]         = { "kitty", NULL };
+static const char *termcmd[]          = { "kitty", NULL };
+static const char *termcmdfill[]      = { "kitty", "-o", "background_opacity=1.0", NULL };
+static const char *alacrittycmd[]         = { "kitty", NULL };
 static const char *stcmd[]            = { TERMINAL, NULL };
 static const char *autokeycmd[]       = { "autokey-gtk", NULL };
 
@@ -123,7 +123,7 @@ static Key keys[] = {
   { SMOD,                     XK_m,         spawn,          {.v = mailcmd} },
   { MODKEY,                   XK_Return,    spawn,          {.v = termcmd} },
   { ALTMOD,                   XK_Return,    spawn,          {.v = termcmdfill} },
-  { ControlMask | ShiftMask,  XK_Return,    spawn,          {.v = kittycmd} },
+  { ControlMask | ShiftMask,  XK_Return,    spawn,          {.v = alacrittycmd} },
   { ALTMOD | ShiftMask,       XK_Return,    spawn,          {.v = stcmd} },
   // { ControlMask | ShiftMask,  XK_k,         spawn,          {.v = autokeycmd} },
   { SMOD,                     XK_b,         togglebar,      {0} },
