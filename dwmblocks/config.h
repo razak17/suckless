@@ -7,7 +7,7 @@ static const Block blocks[] = {
     {" ",          "sb-pacpackages",   360,                 8},
     {"",          "sb-cpusage",         5,                18},
     {"",          "sb-memory",         10,                26},
-    {"",          "sb-swap",           15,                 2},
+    // {"",          "sb-swap",           15,                 2},
     {"",          "sb-volume",          0,                10},
     {"",          "sb-battery",        25,                 3},
     {"",          "sb-internet",       20,                 4},
