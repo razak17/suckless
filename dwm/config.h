@@ -102,7 +102,7 @@ static const char *firefox[]          = { "ifirefox-profiles", NULL };
 static const char *filecmd[]          = { "thunar", NULL };
 static const char *mailcmd[]          = { "thunderbird", NULL };
 static const char *termcmd[]          = { "kitty", NULL };
-static const char *termcmdfill[]      = { "kitty", "-o", "background_opacity=1.0", NULL };
+// static const char *termcmdfill[]      = { "kitty", "-o", "background_opacity=1.0", NULL };
 static const char *alacrittycmd[]         = { "kitty", NULL };
 static const char *stcmd[]            = { TERMINAL, NULL };
 static const char *autokeycmd[]       = { "autokey-gtk", NULL };
@@ -122,7 +122,7 @@ static Key keys[] = {
   { SMOD,                     XK_Return,    spawn,          {.v = filecmd} },
   { SMOD,                     XK_m,         spawn,          {.v = mailcmd} },
   { MODKEY,                   XK_Return,    spawn,          {.v = termcmd} },
-  { ALTMOD,                   XK_Return,    spawn,          {.v = termcmdfill} },
+  // { ALTMOD,                   XK_Return,    spawn,          {.v = termcmdfill} },
   { ControlMask | ShiftMask,  XK_Return,    spawn,          {.v = alacrittycmd} },
   { ALTMOD | ShiftMask,       XK_Return,    spawn,          {.v = stcmd} },
   // { ControlMask | ShiftMask,  XK_k,         spawn,          {.v = autokeycmd} },
