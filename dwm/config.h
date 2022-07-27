@@ -146,9 +146,9 @@ static Key keys[] = {
 
   // Gaps
   { CMOD,                     XK_a,         togglegaps,     {1} },
-  { SMOD,                     XK_equal,     defaultgaps,    {0} },
-  { MODKEY,                   XK_equal,     incrgaps,       {.i = +1} },
-  { CMOD,                     XK_d,         incrgaps,       {.i = -1} },
+  { CMOD,                     XK_d,         defaultgaps,    {0} },
+  { CMOD,                     XK_j,         incrgaps,       {.i = +1} },
+  { CMOD,                     XK_k,         incrgaps,       {.i = -1} },
 
   // Layout
   { MODKEY,                   XK_e,         setlayout,      {.v = &layouts[0]} },

@@ -3,8 +3,8 @@
 static const Block blocks[] = {
  /* Icon          Command             Update Interval     Update Signal */
 
-    // {" ",         "dt-kernel",          0,                21},
-    {" ",          "sb-pacpackages",   360,                 8},
+    {" ",         "dt-kernel",          0,                21},
+    // {" ",          "sb-pacpackages",   360,                 8},
     {"",          "sb-cpusage",         5,                18},
     {"",          "sb-memory",         10,                26},
     // {"",          "sb-swap",           15,                 2},
