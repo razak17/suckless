@@ -145,7 +145,7 @@ static Key keys[] = {
   { SMOD,                     XK_period,    tagmon,         {.i = +1 } },
 
   // Gaps
-  { CMOD,                     XK_a,         togglegaps,     {1} },
+  { CMOD,                     XK_t,         togglegaps,     {1} },
   { CMOD,                     XK_d,         defaultgaps,    {0} },
   { CMOD,                     XK_j,         incrgaps,       {.i = +1} },
   { CMOD,                     XK_k,         incrgaps,       {.i = -1} },
@@ -203,10 +203,10 @@ static Key keys[] = {
 
   // Brightness
   { SMOD,                     XK_equal,                  spawn,    SHCMD("brightnessctl set 1000") },
-  { 0,                        XF86XK_MonBrightnessUp,    spawn,    SHCMD("brightnessctl set 10+") },
-  { 0,                        XF86XK_MonBrightnessDown,  spawn,    SHCMD("brightnessctl set 10-") },
-  { SMOD,                     XK_j,                      spawn,    SHCMD("brightnessctl set 10+") },
-  { SMOD,                     XK_k,                      spawn,    SHCMD("brightnessctl set 10-") },
+  { 0,                        XF86XK_MonBrightnessUp,    spawn,    SHCMD("brightnessctl set 40+") },
+  { 0,                        XF86XK_MonBrightnessDown,  spawn,    SHCMD("brightnessctl set 40-") },
+  { SMOD,                     XK_j,                      spawn,    SHCMD("brightnessctl set 40+") },
+  { SMOD,                     XK_k,                      spawn,    SHCMD("brightnessctl set 40-") },
   { 0,                        XF86XK_TouchpadOff,        spawn,    SHCMD("synclient TouchpadOff=1") },
   { 0,                        XF86XK_TouchpadOn,         spawn,    SHCMD("synclient TouchpadOff=0") },
 
