@@ -105,7 +105,7 @@ static const char *termcmd[]          = { "kitty", NULL };
 // static const char *termcmdfill[]      = { "kitty", "-o", "background_opacity=1.0", NULL };
 static const char *alacrittycmd[]         = { "kitty", NULL };
 static const char *stcmd[]            = { TERMINAL, NULL };
-static const char *autokeycmd[]       = { "autokey-gtk", NULL };
+// static const char *autokeycmd[]       = { "autokey-gtk", NULL };
 
 #include "shiftview.c"
 #include <X11/XF86keysym.h>
@@ -202,9 +202,11 @@ static Key keys[] = {
   { 0,                        XF86XK_PowerOff,           spawn,    SHCMD("sysact")},
 
   // Brightness
-  { 0,                        XF86XK_MonBrightnessUp,    spawn,    SHCMD("brightnessctl set 100+") },
-  { ControlMask | ShiftMask,  XK_equal,                  spawn,    SHCMD("brightnessctl set 100+") },
-  { 0,                        XF86XK_MonBrightnessDown,  spawn,    SHCMD("brightnessctl set 100-") },
+  { SMOD,                     XK_equal,                  spawn,    SHCMD("brightnessctl set 1000") },
+  { 0,                        XF86XK_MonBrightnessUp,    spawn,    SHCMD("brightnessctl set 10+") },
+  { 0,                        XF86XK_MonBrightnessDown,  spawn,    SHCMD("brightnessctl set 10-") },
+  { SMOD,                     XK_j,                      spawn,    SHCMD("brightnessctl set 10+") },
+  { SMOD,                     XK_k,                      spawn,    SHCMD("brightnessctl set 10-") },
   { 0,                        XF86XK_TouchpadOff,        spawn,    SHCMD("synclient TouchpadOff=1") },
   { 0,                        XF86XK_TouchpadOn,         spawn,    SHCMD("synclient TouchpadOff=0") },
 
