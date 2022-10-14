@@ -12,3 +12,5 @@
 *.ko
 *.obj
 *.elf
+
+dwm

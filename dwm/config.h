@@ -102,10 +102,8 @@ static const char *firefox[]          = { "ifirefox-profiles", NULL };
 static const char *filecmd[]          = { "thunar", NULL };
 static const char *mailcmd[]          = { "thunderbird", NULL };
 static const char *termcmd[]          = { "kitty", NULL };
-// static const char *termcmdfill[]      = { "kitty", "-o", "background_opacity=1.0", NULL };
 static const char *alacrittycmd[]         = { "kitty", NULL };
 static const char *stcmd[]            = { TERMINAL, NULL };
-// static const char *autokeycmd[]       = { "autokey-gtk", NULL };
 
 #include "shiftview.c"
 #include <X11/XF86keysym.h>
@@ -119,13 +117,11 @@ static Key keys[] = {
   /* modifier                 key        function        argument */
   { MODKEY,                   XK_d,         spawn,          {.v = dmenucmd} },
   { MODKEY,                   XK_w,         spawn,          {.v = firefox} },
-  { SMOD,                     XK_Return,    spawn,          {.v = filecmd} },
+  { MODKEY,                   XK_Return,    spawn,          {.v = filecmd} },
   { SMOD,                     XK_m,         spawn,          {.v = mailcmd} },
-  { MODKEY,                   XK_Return,    spawn,          {.v = termcmd} },
-  // { ALTMOD,                   XK_Return,    spawn,          {.v = termcmdfill} },
+  { MODKEY,                   XK_t,         spawn,          {.v = termcmd} },
   { ControlMask | ShiftMask,  XK_Return,    spawn,          {.v = alacrittycmd} },
   { ALTMOD | ShiftMask,       XK_Return,    spawn,          {.v = stcmd} },
-  // { ControlMask | ShiftMask,  XK_k,         spawn,          {.v = autokeycmd} },
   { SMOD,                     XK_b,         togglebar,      {0} },
   { MODKEY,                   XK_j,         focusstack,     {.i = +1 } },
   { MODKEY,                   XK_k,         focusstack,     {.i = -1 } },
