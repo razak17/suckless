@@ -17,7 +17,7 @@ static int showbar            = 1;   // 0 means no bar */
 static int topbar             = 1;   // 0 means bottom bar */
 static const Bool viewontag  = True;
 static const char *fonts[]    = { "Operator Mono Lig Book:size=9","JoyPixels:pixelsize=9:antialias=true:autohint=true"};
-static const char dmenufont[] = "Operator Mono Lig Book:size=8";
+static const char dmenufont[] = "Cascadia Mono:size=9";
 
 #include "/home/razak/.cache/wal/colors-wal-dwm.h"
 
