@@ -6,7 +6,7 @@
 
 // Appearance
 static unsigned int borderpx  = 2;   // border pixel of windows */
-static unsigned int snap      = 32;  // snap pixel */
+static unsigned int snap      = 1;  // snap pixel */
 static unsigned int gappih    = 7;   // horiz inner gap
 static unsigned int gappiv    = 7;   // vert inner gap
 static unsigned int gappoh    = 9;   // horiz outer gap
@@ -16,7 +16,12 @@ static int smartgaps          = 0;   // 1 means no outer gap when there is only 
 static int showbar            = 1;   // 0 means no bar */
 static int topbar             = 1;   // 0 means bottom bar */
 static const Bool viewontag  = True;
-static const char *fonts[]    = { "Cascadia Mono:size=9","JoyPixels:pixelsize=9:antialias=true:autohint=true"};
+static const char *fonts[]    = {
+  "Cascadia Mono:size=9",
+  "Noto Color Emoji:pixelsize=11:antialias=true:autohint=true",
+  "JoyPixels:pixelsize=9:antialias=true:autohint=true"
+  //"Material Design Icons Desktop:size=11"
+  };
 static const char dmenufont[] = "Operator Mono Lig Book:size=10";
 
 #include "/home/razak/.cache/wal/colors-wal-dwm.h"
@@ -102,8 +107,7 @@ static const char *firefox[]          = { "ifirefox-profiles", NULL };
 static const char *filecmd[]          = { "thunar", NULL };
 static const char *mailcmd[]          = { "thunderbird", NULL };
 static const char *termcmd[]          = { "kitty", NULL };
-static const char *alacrittycmd[]         = { "kitty", NULL };
-static const char *stcmd[]            = { TERMINAL, NULL };
+static const char *emojimenu[]        = { "dmenuemoji", NULL };
 
 #include "shiftview.c"
 #include <X11/XF86keysym.h>
@@ -120,8 +124,7 @@ static Key keys[] = {
   { MODKEY,                   XK_m,         spawn,          {.v = mailcmd} },
   { MODKEY,                   XK_e,         spawn,          {.v = filecmd} },
   { MODKEY,                   XK_Return,    spawn,          {.v = termcmd} },
-  { ControlMask | ShiftMask,  XK_Return,    spawn,          {.v = alacrittycmd} },
-  { ALTMOD | ShiftMask,       XK_Return,    spawn,          {.v = stcmd} },
+  { ALTMOD,                   XK_e,         spawn,          {.v = emojimenu} },
   { SMOD,                     XK_b,         togglebar,      {0} },
   { MODKEY,                   XK_j,         focusstack,     {.i = +1 } },
   { MODKEY,                   XK_k,         focusstack,     {.i = -1 } },
