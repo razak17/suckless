@@ -117,9 +117,9 @@ static Key keys[] = {
   /* modifier                 key        function        argument */
   { MODKEY,                   XK_d,         spawn,          {.v = dmenucmd} },
   { MODKEY,                   XK_w,         spawn,          {.v = firefox} },
-  { MODKEY,                   XK_Return,    spawn,          {.v = filecmd} },
-  { SMOD,                     XK_m,         spawn,          {.v = mailcmd} },
-  { MODKEY,                   XK_t,         spawn,          {.v = termcmd} },
+  { MODKEY,                   XK_m,         spawn,          {.v = mailcmd} },
+  { MODKEY,                   XK_e,         spawn,          {.v = filecmd} },
+  { MODKEY,                   XK_Return,    spawn,          {.v = termcmd} },
   { ControlMask | ShiftMask,  XK_Return,    spawn,          {.v = alacrittycmd} },
   { ALTMOD | ShiftMask,       XK_Return,    spawn,          {.v = stcmd} },
   { SMOD,                     XK_b,         togglebar,      {0} },
@@ -147,8 +147,8 @@ static Key keys[] = {
   { CMOD,                     XK_k,         incrgaps,       {.i = -1} },
 
   // Layout
-  { MODKEY,                   XK_e,         setlayout,      {.v = &layouts[0]} },
-  { SMOD,                     XK_e,         setlayout,      {.v = &layouts[1]} },
+  { SMOD,                     XK_e,         setlayout,      {.v = &layouts[0]} },
+  { SMOD,                     XK_w,         setlayout,      {.v = &layouts[1]} },
   { SMOD,                     XK_u,         setlayout,      {.v = &layouts[2]} },
   { SMOD,                     XK_p,         setlayout,      {.v = &layouts[3]} },
   { MODKEY,                   XK_q,         setlayout,      {.v = &layouts[4]} },
@@ -174,7 +174,7 @@ static Key keys[] = {
 
   // Scrapads
   { MODKEY,                 XK_apostrophe,  togglescratch,  {.ui = 0 } },
-  { MODKEY,                 XK_m,           togglescratch,  {.ui = 1 } },
+  { SMOD,                   XK_m,           togglescratch,  {.ui = 1 } },
   { MODKEY,                 XK_semicolon,   togglescratch,  {.ui = 2 } },
 
 
