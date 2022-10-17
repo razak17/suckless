@@ -26,7 +26,7 @@ typedef struct {
   const void *cmd;
 } Sp;
 const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "82x34", NULL };
-const char *spcmd2[] = {TERMINAL, "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
+const char *spcmd2[] = {TERMINAL, "-n", "spcalc", "-f", "Cascadia Mono:size=14", "-g", "50x20", "-e", "bc", "-lq", NULL };
 const char *spcmd3[]   = {TERMINAL, "-n", "inotetaker", "-g", "70x30", "-e", "inotetaker", NULL };
 static Sp scratchpads[] = {
   /* name          cmd  */
