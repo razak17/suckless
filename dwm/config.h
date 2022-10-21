@@ -253,3 +253,4 @@ static Button buttons[] = {
     {ClkRootWin,         0,             Button2,       togglebar,    {0} },
 };
 
+
