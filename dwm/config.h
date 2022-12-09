@@ -52,7 +52,6 @@ static const Rule rules[] = {
   /* class         instance      title             tags mask     isfloating  isterminal  noswallow monitor */
   { "autokey",     NULL,         NULL,             1 << 0,       0,           0,         0,        -1 },
   { "Gimp",        NULL,         NULL,             1 << 0,       0,           0,         0,        -1 },
-  { "mpv",         NULL,         NULL,             1 << 0,       0,           0,         0,        -1 },
   { "Thunderbird", NULL,         NULL,             1 << 1,       0,           0,         0,        -1 },
   { "discord",     NULL,         NULL,             1 << 2,       0,           0,         0,        -1 },
   { "Genymotion",  NULL,         NULL,             1 << 2,       0,           0,         0,        -1 },
@@ -121,7 +120,7 @@ static Key keys[] = {
   /* modifier                 key        function        argument */
   { MODKEY,                   XK_d,         spawn,          {.v = dmenucmd} },
   { MODKEY,                   XK_w,         spawn,          {.v = firefox} },
-  { MODKEY,                   XK_m,         spawn,          {.v = mailcmd} },
+  { CMOD,                     XK_e,         spawn,          {.v = mailcmd} },
   { MODKEY,                   XK_e,         spawn,          {.v = filecmd} },
   { MODKEY,                   XK_Return,    spawn,          {.v = termcmd} },
   { ALTMOD,                   XK_e,         spawn,          {.v = emojimenu} },
@@ -137,7 +136,7 @@ static Key keys[] = {
   { MODKEY,                   XK_0,         view,           {.ui = ~0 } },
   { ALTMOD | ShiftMask,       XK_0,         tag,            {.ui = ~0 } },
   { MODKEY,                   XK_x,         killclient,     {0} },
-  { CMOD,                     XK_e,         quit,           {0} },
+  { CMOD,                     XK_q,         quit,           {0} },
   { MODKEY,                   XK_comma,     focusmon,       {.i = -1 } },
   { MODKEY,                   XK_period,    focusmon,       {.i = +1 } },
   { SMOD,                     XK_comma,     tagmon,         {.i = -1 } },
@@ -177,7 +176,7 @@ static Key keys[] = {
 
   // Scrapads
   { MODKEY,                 XK_apostrophe,  togglescratch,  {.ui = 0 } },
-  { SMOD,                   XK_m,           togglescratch,  {.ui = 1 } },
+  { MODKEY,                 XK_m,           togglescratch,  {.ui = 1 } },
   { MODKEY,                 XK_semicolon,   togglescratch,  {.ui = 2 } },
 
 
