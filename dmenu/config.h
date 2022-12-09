@@ -7,12 +7,9 @@ static const char *fonts[]    = { "Operator Mono Lig Book:size=10","JoyPixels:pi
 static const unsigned int bgalpha = 0xe0;
 static const unsigned int fgalpha = OPAQUE;
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
-static const char *colors[SchemeLast][2] = {
-	/*     fg         bg       */
-	[SchemeNorm] = { "#bbbbbb", "#222222" },
-	[SchemeSel] = { "#030303", "#7685b1" },
-	[SchemeOut] = { "#000000", "#00ffff" },
-};
+
+#include "/home/razak/.cache/wal/colors-wal-dmenu.h"
+
 static const unsigned int alphas[SchemeLast][2] = {
 	/*		fgalpha		bgalphga	*/
 	[SchemeNorm] = { fgalpha, bgalpha },
