@@ -22,7 +22,7 @@ static const char *fonts[]    = {
   "JoyPixels:pixelsize=9:antialias=true:autohint=true"
   //"Material Design Icons Desktop:size=11"
   };
-static const char dmenufont[] = "Operator Mono Lig Book:size=10";
+static const char dmenufont[] = "Operator Mono Lig Book:size=9";
 
 #include "/home/razak/.cache/wal/colors-wal-dwm.h"
 
