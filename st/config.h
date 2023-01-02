@@ -113,28 +113,28 @@ float alphaUnfocus;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	"#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
-	"#cc241d",
+	"#0a0814", /* hard contrast: #1d2021 / soft contrast: #32302f */
+	"#f2241f",
+  "#19cb00",
+  "#cecb00",
+	"#51afef",
+	"#cb1ed1",
+	"#14ffff",
+	"#c3eeff",
+  "#828482",
 	"#fb4934",
-	"#98971a",
-	"#d79921",
-	"#458588",
-	"#b16286",
-	"#689d6a",
-	"#a89984",
-	"#928374",
-	"#b8bb26",
-	"#fabd2f",
-	"#83a598",
-	"#d3869b",
-	"#8ec07c",
-	"#ebdbb2",
+	"#67b11d",
+  "#b1951d",
+	"#3a81c3",
+	"#a31db1",
+	"#21b8c7",
+	"#bbc2cf",
 	[255] = 0,
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#add8e6", /* 256 -> cursor */
-	"#555555", /* 257 -> rev cursor*/
-	"#282828", /* 258 -> bg */
-	"#ebdbb2", /* 259 -> fg */
+	"#9d7cd8", /* 256 -> cursor */
+	"#030303", /* 257 -> rev cursor*/
+	"#12141d", /* 258 -> bg */
+	"#bbc2cf", /* 259 -> fg */
 };
 
 
