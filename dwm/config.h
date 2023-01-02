@@ -134,7 +134,7 @@ static Key keys[] = {
   { MODKEY,                   XK_Tab,       view,           {1} },
   { MODKEY,                   XK_p,         view,           {0} },
   { MODKEY,                   XK_0,         view,           {.ui = ~0 } },
-  { ALTMOD | ShiftMask,       XK_0,         tag,            {.ui = ~0 } },
+  { SMOD,                     XK_0,         tag,            {.ui = ~0 } },
   { MODKEY,                   XK_x,         killclient,     {0} },
   { CMOD,                     XK_q,         quit,           {0} },
   { MODKEY,                   XK_comma,     focusmon,       {.i = -1 } },
