@@ -132,7 +132,7 @@ static Key keys[] = {
   { MODKEY,                   XK_h,         setmfact,       {.f = -0.05} },
   { MODKEY,                   XK_l,         setmfact,       {.f = +0.05} },
   { MODKEY,                   XK_Tab,       view,           {1} },
-  { MODKEY,                   XK_p,         view,           {0} },
+  { SMOD,                     XK_p,         view,           {0} },
   { MODKEY,                   XK_0,         view,           {.ui = ~0 } },
   { SMOD,                     XK_0,         tag,            {.ui = ~0 } },
   { MODKEY,                   XK_x,         killclient,     {0} },
@@ -168,7 +168,7 @@ static Key keys[] = {
 
   // Shiftview
   { MODKEY,                   XK_n,         shiftview,      {.i = 1} },
-  { MODKEY,                   XK_b,         shiftview,      {.i = -1} },
+  { MODKEY,                   XK_p,         shiftview,      {.i = -1} },
 
   // Move stack
   { MODKEY|ShiftMask,        XK_n,          movestack,      {.i = +1 } },
@@ -192,6 +192,7 @@ static Key keys[] = {
   { 0,                        XK_Print,                  spawn,    ESHCMD("screenshot --select")},
 
   // Clipboard
+  { MODKEY,                   XK_b,                      spawn,    ESHCMD("bm")},
   { ControlMask,              XK_grave,                  spawn,    ESHCMD("iclip -l")},
   { ControlMask | ShiftMask,  XK_grave,                  spawn,    ESHCMD("iclip -s")},
 
