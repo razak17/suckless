@@ -123,7 +123,7 @@ static Key keys[] = {
   { CMOD,                     XK_e,         spawn,          {.v = mailcmd} },
   { MODKEY,                   XK_e,         spawn,          {.v = filecmd} },
   { MODKEY,                   XK_Return,    spawn,          {.v = termcmd} },
-  { ALTMOD,                   XK_e,         spawn,          {.v = emojimenu} },
+  { AMOD,                     XK_e,         spawn,          {.v = emojimenu} },
   { SMOD,                     XK_b,         togglebar,      {0} },
   { MODKEY,                   XK_j,         focusstack,     {.i = +1 } },
   { MODKEY,                   XK_k,         focusstack,     {.i = -1 } },
