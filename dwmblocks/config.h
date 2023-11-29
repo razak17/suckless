@@ -10,6 +10,7 @@ static const Block blocks[] = {
  // {"",          "swap",           15,                 2},
     {"",          "volume",          0,                10},
     {"",          "battery",        15,                 3},
+    {"",          "bluetooth",       5,                 6},
     {"",          "internet",        2,                 4},
     {"",          "clock",           1,                 5},
  // {"📦 ",       "installed",       0,                17},
