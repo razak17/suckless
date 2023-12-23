@@ -194,6 +194,8 @@ static Key keys[] = {
   { CMOD,                     XK_m,                      spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
   { 0,                        XF86XK_AudioRaiseVolume,   spawn,    SHCMD("pamixer --allow-boost -i 2; kill -44 $(pidof dwmblocks)") },
   { 0,                        XF86XK_AudioLowerVolume,   spawn,    SHCMD("pamixer --allow-boost -d 2; kill -44 $(pidof dwmblocks)") },
+  { CMOD,                     XK_n,                      spawn,    SHCMD("pamixer --allow-boost -i 2; kill -44 $(pidof dwmblocks)") },
+  { CMOD,                     XK_p,                      spawn,    SHCMD("pamixer --allow-boost -d 2; kill -44 $(pidof dwmblocks)") },
 
   // Screenshot
   { MODKEY,                   XK_Print,                  spawn,    ESHCMD("screenshot --all")},
