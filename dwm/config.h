@@ -32,7 +32,7 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "82x34", NULL };
 const char *spcmd2[] = {TERMINAL, "-n", "spcalc", "-f", "Cascadia Mono:size=14", "-g", "50x20", "-e", "bc", "-lq", NULL };
-const char *spcmd3[]   = {TERMINAL, "-n", "inotetaker", "-g", "70x30", "-e", "inotetaker", NULL };
+const char *spcmd3[]   = {TERMINAL, "-n", "notetaker", "-g", "70x30", "-e", "notetaker", NULL };
 static Sp scratchpads[] = {
   /* name          cmd  */
   {"spterm",      spcmd1},
@@ -109,8 +109,8 @@ static const Layout layouts[] = {
 // commands
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]         = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont};
-static const char *browsers[]          = { "ibrowse", NULL };
-static const char *firefox[]          = { "ifirefox-profiles", NULL };
+static const char *browsers[]          = { "choose_browser", NULL };
+static const char *firefox[]          = { "firefox-profiles", NULL };
 static const char *filecmd[]          = { "thunar", NULL };
 static const char *mailcmd[]          = { "thunderbird", NULL };
 static const char *termcmd[]          = { "kitty", NULL };
@@ -204,8 +204,8 @@ static Key keys[] = {
 
   // Clipboard
   { MODKEY,                   XK_b,                      spawn,    ESHCMD("bm")},
-  { ControlMask,              XK_grave,                  spawn,    ESHCMD("iclip -l")},
-  { ControlMask | ShiftMask,  XK_grave,                  spawn,    ESHCMD("iclip -s")},
+  { ControlMask,              XK_grave,                  spawn,    ESHCMD("pick_clip_history -l")},
+  { ControlMask | ShiftMask,  XK_grave,                  spawn,    ESHCMD("pick_clip_history -s")},
 
   // Power
   { 0,                        XF86XK_Sleep,              spawn,    ESHCMD("lock-sleep")},
