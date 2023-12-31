@@ -32,7 +32,7 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "82x34", NULL };
 const char *spcmd2[] = {TERMINAL, "-n", "spcalc", "-f", "Cascadia Mono:size=14", "-g", "50x20", "-e", "bc", "-lq", NULL };
-const char *spcmd3[]   = {TERMINAL, "-n", "notetaker", "-g", "70x30", "-e", "notetaker", NULL };
+const char *spcmd3[]   = {TERMINAL, "-n", "obsidian-open", "-g", "84x38", "-e", "obsidian-open", NULL };
 static Sp scratchpads[] = {
   /* name          cmd  */
   {"spterm",      spcmd1},
@@ -49,26 +49,26 @@ static const Rule rules[] = {
    *  WM_CLASS(STRING) = instance, class
    *  WM_NAME(STRING) = title
   */
-  /* class         instance      title             tags mask     isfloating  isterminal  noswallow monitor */
-  { "autokey",     NULL,         NULL,             1 << 0,       0,           0,         0,        -1 },
-  { "Gimp",        NULL,         NULL,             1 << 0,       0,           0,         0,        -1 },
-  { "Thunderbird", NULL,         NULL,             1 << 1,       0,           0,         0,        -1 },
-  { "discord",     NULL,         NULL,             1 << 2,       0,           0,         0,        -1 },
-  { "Genymotion",  NULL,         NULL,             1 << 2,       0,           0,         0,        -1 },
-  { "Thunar",      NULL,         NULL,             1 << 3,       0,           0,         0,        -1 },
-  { "Slack",       NULL,         NULL,             1 << 3,       0,           0,         0,        -1 },
-  { "obsidian",    NULL,         NULL,             1 << 3,       0,           0,         0,        -1 },
-  { "Lutris",      NULL,         NULL,             1 << 2,       0,           0,         0,        -1 },
-  { "Insomnia",    NULL,         NULL,             1 << 4,       0,           0,         0,        -1 },
-  { "bruno",       NULL,         NULL,             1 << 4,       0,           0,         0,        -1 },
-  { "Brave",       NULL,         NULL,             1 << 5,       0,           0,         0,        -1 },
-  { "Thorium",     NULL,         NULL,             1 << 5,       0,           0,         0,        -1 },
-  { "Mercury",     NULL,         NULL,             1 << 5,       0,           0,         0,        -1 },
-  { "firefox",     NULL,         NULL,             1 << 5,       0,           0,         0,        -1 },
-  { NULL,          NULL,         "Event Tester",   0,            0,           0,         1,        -1 },
-  { NULL,          "spterm",     NULL,             SPTAG(0),     1,           1,         0,        -1 },
-  { NULL,          "spcalc",     NULL,             SPTAG(1),     1,           1,         0,        -1 },
-  { NULL,          "inotetaker", NULL,             SPTAG(2),     1,           1,         0,        -1 },
+  /* class         instance         title             tags mask     isfloating  isterminal  noswallow monitor */
+  { "autokey",     NULL,            NULL,             1 << 0,       0,           0,         0,        -1 },
+  { "Gimp",        NULL,            NULL,             1 << 0,       0,           0,         0,        -1 },
+  { "Thunderbird", NULL,            NULL,             1 << 1,       0,           0,         0,        -1 },
+  { "discord",     NULL,            NULL,             1 << 2,       0,           0,         0,        -1 },
+  { "Genymotion",  NULL,            NULL,             1 << 2,       0,           0,         0,        -1 },
+  { "Thunar",      NULL,            NULL,             1 << 3,       0,           0,         0,        -1 },
+  { "Slack",       NULL,            NULL,             1 << 3,       0,           0,         0,        -1 },
+  { "obsidian",    NULL,            NULL,             1 << 3,       0,           0,         0,        -1 },
+  { "Lutris",      NULL,            NULL,             1 << 2,       0,           0,         0,        -1 },
+  { "Insomnia",    NULL,            NULL,             1 << 4,       0,           0,         0,        -1 },
+  { "bruno",       NULL,            NULL,             1 << 4,       0,           0,         0,        -1 },
+  { "Brave",       NULL,            NULL,             1 << 5,       0,           0,         0,        -1 },
+  { "Thorium",     NULL,            NULL,             1 << 5,       0,           0,         0,        -1 },
+  { "Mercury",     NULL,            NULL,             1 << 5,       0,           0,         0,        -1 },
+  { "firefox",     NULL,            NULL,             1 << 5,       0,           0,         0,        -1 },
+  { NULL,          NULL,            "Event Tester",   0,            0,           0,         1,        -1 },
+  { NULL,          "spterm",        NULL,             SPTAG(0),     1,           1,         0,        -1 },
+  { NULL,          "spcalc",        NULL,             SPTAG(1),     1,           1,         0,        -1 },
+  { NULL,          "obsidian-open", NULL,             SPTAG(2),     1,           1,         0,        -1 },
 };
 
 // layout(s)
