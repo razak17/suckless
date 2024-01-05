@@ -143,7 +143,7 @@ static Key keys[] = {
   { MODKEY,                   XK_Tab,       view,           {1} },
   { SMOD,                     XK_p,         view,           {0} },
   { MODKEY,                   XK_0,         view,           {.ui = ~0 } },
-  { SMOD,                     XK_0,         tag,            {.ui = ~0 } },
+  // { SMOD,                     XK_0,         tag,            {.ui = ~0 } },
   { MODKEY,                   XK_x,         killclient,     {0} },
   { CMOD,                     XK_q,         quit,           {0} },
   { MODKEY,                   XK_comma,     focusmon,       {.i = -1 } },
@@ -180,8 +180,8 @@ static Key keys[] = {
   { MODKEY,                   XK_p,         shiftview,      {.i = -1} },
 
   // Move stack
-  { MODKEY|ShiftMask,        XK_n,          movestack,      {.i = +1 } },
-  { MODKEY|ShiftMask,        XK_k,          movestack,      {.i = -1 } },
+  // { MODKEY|ShiftMask,        XK_n,          movestack,      {.i = +1 } },
+  // { MODKEY|ShiftMask,        XK_k,          movestack,      {.i = -1 } },
 
   // Scrapads
   { MODKEY,                 XK_apostrophe,  togglescratch,  {.ui = 0 } },
