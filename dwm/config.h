@@ -65,6 +65,7 @@ static const Rule rules[] = {
   { "Thorium",     NULL,            NULL,             1 << 5,       0,           0,         0,        -1 },
   { "Mercury",     NULL,            NULL,             1 << 5,       0,           0,         0,        -1 },
   { "firefox",     NULL,            NULL,             1 << 5,       0,           0,         0,        -1 },
+  { "floorp",      NULL,            NULL,             1 << 5,       0,           0,         0,        -1 },
   { NULL,          NULL,            "Event Tester",   0,            0,           0,         1,        -1 },
   { NULL,          "spterm",        NULL,             SPTAG(0),     1,           1,         0,        -1 },
   { NULL,          "spcalc",        NULL,             SPTAG(1),     1,           1,         0,        -1 },
