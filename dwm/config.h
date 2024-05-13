@@ -113,7 +113,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]         = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont};
 static const char *browsers[]          = { "choose_browser", NULL };
-static const char *firefox[]          = { "firefox-profiles", NULL };
 static const char *filecmd[]          = { "thunar", NULL };
 static const char *mailcmd[]          = { "thunderbird", NULL };
 static const char *termcmd[]          = { "kitty", NULL };
@@ -130,7 +129,7 @@ static const char *emojimenu[]        = { "dmenuemoji", NULL };
 static Key keys[] = {
   /* modifier                 key        function        argument */
   { MODKEY,                   XK_d,         spawn,          {.v = dmenucmd} },
-  { MODKEY,                   XK_w,         spawn,          {.v = firefox} },
+  { MODKEY,                   XK_w,         spawn,          ESHCMD("fuj -profiles")},
   { MODKEY,                   XK_o,         spawn,          {.v = browsers} },
   { CMOD,                     XK_e,         spawn,          {.v = mailcmd} },
   { MODKEY,                   XK_e,         spawn,          {.v = filecmd} },
