@@ -9,7 +9,7 @@ static const Block blocks[] = {
     {"",          "memory",          4,                26},
  // {"",          "swap",           15,                 2},
     {"",          "volume",          0,                10},
-    {"",          "bluetooth",       5,                 6},
+    // {"",          "bluetooth",       5,                 6},
     {"",          "internet",        2,                 4},
     {"",          "battery",         3,                 3},
     {"",          "clock",           1,                 5},
