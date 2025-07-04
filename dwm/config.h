@@ -194,8 +194,8 @@ static const Key keys[] = {
     // Actualfullscreen
     { MODKEY,                       XK_f,     togglefullscr,  {0} },
     // Cyclelayout
-    // { SMOD,                         XK_h,     cyclelayout,    {.i = -1} },
-    // { SMOD,                         XK_l,     cyclelayout,    {.i = +1} },
+    { SMOD,                         XK_h,     cyclelayout,    {.i = -1} },
+    { SMOD,                         XK_l,     cyclelayout,    {.i = +1} },
     // Move stack
     { MODKEY|Mod1Mask,              XK_p,    movestack,      {.i = -1 } },
     { MODKEY|Mod1Mask,              XK_n,    movestack,      {.i = +1 } },
