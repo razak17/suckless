@@ -204,6 +204,7 @@ static const Key keys[] = {
     { MODKEY,			            XK_s,          togglesticky,    {0} },
     { MODKEY|ShiftMask,             XK_q,          quit,            {0} },
     // Audio
+	{ MODKEY | ControlMask,         XK_b,                        spawn,    SHCMD("blueman-manager") },
     { 0,                            XF86XK_AudioMute,            spawn,    SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
     { MODKEY | ControlMask,         XK_m,                        spawn,    SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
     { 0,                            XF86XK_AudioRaiseVolume,     spawn,    SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%- && wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+; kill -44 $(pidof dwmblocks)") },
