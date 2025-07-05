@@ -101,6 +101,7 @@ typedef struct Client Client;
 struct Client {
 	char name[256];
 	float mina, maxa;
+	float cfact;
 	int x, y, w, h;
 	int oldx, oldy, oldw, oldh;
 	int basew, baseh, incw, inch, maxw, maxh, minw, minh, hintsvalid;
@@ -1242,6 +1243,7 @@ manage(Window w, XWindowAttributes *wa)
 	c->w = c->oldw = wa->width;
 	c->h = c->oldh = wa->height;
 	c->oldbw = wa->border_width;
+	c->cfact = 1.0;
 
 	updatetitle(c);
 	if (XGetTransientForHint(dpy, w, &trans) && (t = wintoclient(trans))) {

@@ -103,19 +103,26 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",	tile },	                /* Default: Master on left, slaves on right */
-	{ "TTT",	bstack },               /* Master on top, slaves on bottom */
+	{ "[]=",	tile },	                     /* Default: Master on left, slaves on right */
+	{ "TTT",	bstack },                    /* Master on top, slaves on bottom */
 
-	{ "[@]",	spiral },               /* Fibonacci spiral */
-	{ "[\\]",	dwindle },              /* Decreasing in size right and leftward */
+    {"===",     bstackhoriz},
+    {"HHH",     grid},                        /* Master on top, slaves on bottom */
+    {"###",     nrowgrid},                    /* nrowgrid layout + gaps */
 
-	{ "[D]",	deck },	                /* Master on left, slaves in monocle-like mode on right */
-	{ "[M]",	monocle },              /* All windows on top of eachother */
+	{ "---",   horizgrid },                  /* Horizontal grid layout + gaps */
+	{ ":::",   gaplessgrid },                /* Gappless grid layout + gaps (ironically) */
 
-	{ "|M|",	centeredmaster },               /* Master in middle, slaves on sides */
-	{ ">M>",	centeredfloatingmaster },       /* Same but master floats */
+	{ "[@]",	spiral },                    /* Fibonacci spiral */
+	{ "[\\]",	dwindle },                   /* Decreasing in size right and leftward */
 
-	{ "><>",	NULL },	                /* no layout function means floating behavior */
+	{ "[D]",	deck },	                     /* Master on left, slaves in monocle-like mode on right */
+	{ "[M]",	monocle },                   /* All windows on top of eachother */
+
+	{ "|M|",	centeredmaster },            /* Master in middle, slaves on sides */
+	{ ">M>",	centeredfloatingmaster },    /* Same but master floats */
+
+	{ "><>",	NULL },	                     /* no layout function means floating behavior */
 	{ NULL,		NULL },
 };
 
@@ -174,7 +181,7 @@ static const Key keys[] = {
 	{ MODKEY | ShiftMask,           XK_period,     tagmon,          {.i = +1 } },
     // Power Menu
     { MODKEY | ControlMask,         XK_l,          spawn,           {.v = (const char*[]){ "sysact", NULL } } },
-        { MODKEY,			        XK_BackSpace,  spawn,           {.v = (const char*[]){ "sysact", NULL } } },
+    { MODKEY,			            XK_BackSpace,  spawn,           {.v = (const char*[]){ "sysact", NULL } } },
     { ALTKEY | ControlMask,         XK_Delete,     spawn,           {.v = (const char*[]){ "sysact", NULL } } },
     // Shiftview
     { MODKEY,                       XK_n,          shiftview,       {.i = 1} },
