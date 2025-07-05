@@ -151,7 +151,7 @@ static const Layout layouts[] = {
 static const Key keys[] = {
 	/* modifier                     key            function         argument */
 	STACKKEYS(MODKEY,                              focus)
-	STACKKEYS(MODKEY|ShiftMask,                    push)
+	STACKKEYS(MODKEY | ShiftMask,                  push)
     { MODKEY,			            XK_d,          spawn,           {.v = (const char*[]){ "dmenu_run", NULL } } },
     { MODKEY,                       XK_i,          spawn,           SHCMD("fuj -profiles")},
     { MODKEY,                       XK_w,          spawn,           SHCMD("fuj -zen-profiles")},
@@ -172,9 +172,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Tab,        view,            {0} },
     { MODKEY,                       XK_x,          killclient,      {0} },
 	{ MODKEY,                       XK_space,      setlayout,       {0} },
-	{ MODKEY|ShiftMask,             XK_space,      togglefloating,  {0} },
+	{ MODKEY | ShiftMask,           XK_space,      togglefloating,  {0} },
 	{ MODKEY,                       XK_0,          view,            {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,          tag,             {.ui = ~0 } },
+	{ MODKEY | ShiftMask,           XK_0,          tag,             {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,      focusmon,        {.i = -1 } },
 	{ MODKEY,                       XK_period,     focusmon,        {.i = +1 } },
 	{ MODKEY | ShiftMask,           XK_comma,      tagmon,          {.i = -1 } },
@@ -192,16 +192,16 @@ static const Key keys[] = {
     { MODKEY | ControlMask,         XK_j,          incrgaps,        {.i = +1} },
     { MODKEY | ControlMask,         XK_k,          incrgaps,        {.i = -1} },
     { MODKEY | ShiftMask,           XK_i,          setlayout,       {.v = &layouts[0]} },
-    { MODKEY,                       XK_y,          setlayout,       {.v = &layouts[5]} },
-    { MODKEY|ShiftMask,		        XK_apostrophe, togglesmartgaps, {0} },
+    { MODKEY,                       XK_y,          setlayout,       {.v = &layouts[10]} },
+    { MODKEY | ShiftMask,		    XK_apostrophe, togglesmartgaps, {0} },
     // Actualfullscreen
     { MODKEY,                       XK_f,          togglefullscr,   {0} },
     // Cyclelayout
     { MODKEY | ShiftMask,           XK_h,          cyclelayout,     {.i = -1} },
     { MODKEY | ShiftMask,           XK_l,          cyclelayout,     {.i = +1} },
     // Move stack
-    { MODKEY | Mod1Mask,            XK_p,          movestack,       {.i = -1 } },
-    { MODKEY | Mod1Mask,            XK_n,          movestack,       {.i = +1 } },
+    { MODKEY | ALTKEY,              XK_p,          movestack,       {.i = -1 } },
+    { MODKEY | ALTKEY,              XK_n,          movestack,       {.i = +1 } },
     // Scrapads
     { MODKEY,                       XK_apostrophe, togglescratch,   {.ui = 0 } },
     { MODKEY,                       XK_m,          togglescratch,   {.ui = 1 } },
@@ -209,7 +209,7 @@ static const Key keys[] = {
     // Stuff
     { MODKEY,			            XK_F5,         xrdb,            {.v = NULL } },
     { MODKEY,			            XK_s,          togglesticky,    {0} },
-    { MODKEY|ShiftMask,             XK_q,          quit,            {0} },
+    { MODKEY | ShiftMask,           XK_q,          quit,            {0} },
     // Audio
 	{ MODKEY | ControlMask,         XK_b,                        spawn,    SHCMD("blueman-manager") },
     { 0,                            XF86XK_AudioMute,            spawn,    SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
