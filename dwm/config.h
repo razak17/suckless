@@ -58,6 +58,7 @@ static const Rule rules[] = {
     /* class                   instance         title             tags mask     isfloating  isterminal  noswallow monitor */
     { "autokey",               NULL,            NULL,             1 << 0,       0,           0,         0,        -1 },
     { "Gimp",                  NULL,            NULL,             1 << 0,       0,           0,         0,        -1 },
+    { "Anydesk",               NULL,            NULL,             1 << 0,       0,           0,         0,        -1 },
     { "thunderbird",           NULL,            NULL,             1 << 2,       0,           0,         0,        -1 },
     { "DBeaver",               NULL,            NULL,             1 << 2,       0,           0,         0,        -1 },
     { "discord",               NULL,            NULL,             1 << 2,       0,           0,         0,        -1 },
