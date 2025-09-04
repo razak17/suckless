@@ -246,6 +246,7 @@ static const Key keys[] = {
     { MODKEY,                       XK_b,                        spawn,    SHCMD("bm")},
     { ControlMask,                  XK_grave,                    spawn,    SHCMD("pick_clip_history -l")},
     { ControlMask | ShiftMask,      XK_grave,                    spawn,    SHCMD("pick_clip_history -s")},
+    { MODKEY | ControlMask | ShiftMask, XK_g,                    spawn,    SHCMD("pick_clip_history -g") },
     { MODKEY | ControlMask | ShiftMask, XK_p,                    spawn,    SHCMD("pick_clip_history -p") },
     // Power
     { 0,                            XF86XK_Sleep,                spawn,    SHCMD("lock-sleep")},
