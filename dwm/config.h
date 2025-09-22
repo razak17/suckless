@@ -253,10 +253,10 @@ static const Key keys[] = {
     { 0,                            XF86XK_PowerOff,             spawn,    SHCMD("sysact")},
     // Brightness
     { MODKEY | ShiftMask,           XK_equal,                    spawn,    SHCMD("brightnessctl set 100000") },
-    { 0,                            XF86XK_MonBrightnessDown,    spawn,    SHCMD("brightnessctl set 500-") },
-    { 0,                            XF86XK_MonBrightnessUp,      spawn,    SHCMD("brightnessctl set 500+") },
-    { MODKEY | ShiftMask,           XK_j,                        spawn,    SHCMD("brightnessctl set 500-") },
-    { MODKEY | ShiftMask,           XK_k,                        spawn,    SHCMD("brightnessctl set 500+") },
+    { 0,                            XF86XK_MonBrightnessDown,    spawn,    SHCMD("brightnessctl set 5000-") },
+    { 0,                            XF86XK_MonBrightnessUp,      spawn,    SHCMD("brightnessctl set 5000+") },
+    { MODKEY | ShiftMask,           XK_j,                        spawn,    SHCMD("brightnessctl set 5000-") },
+    { MODKEY | ShiftMask,           XK_k,                        spawn,    SHCMD("brightnessctl set 5000+") },
     { 0,                            XF86XK_TouchpadOff,          spawn,    SHCMD("synclient TouchpadOff=1") },
     { 0,                            XF86XK_TouchpadOn,           spawn,    SHCMD("synclient TouchpadOff=0") },
     TAGKEYS(                        XK_1,                        0)
