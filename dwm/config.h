@@ -211,7 +211,7 @@ static const Key keys[] = {
     // Move stack
     { MODKEY | ALTKEY,              XK_p,          movestack,       {.i = -1 } },
     { MODKEY | ALTKEY,              XK_n,          movestack,       {.i = +1 } },
-    // Scrapads
+    // Scratchpads
     { MODKEY,                       XK_apostrophe, togglescratch,   {.ui = 0 } },
     { MODKEY,                       XK_m,          togglescratch,   {.ui = 1 } },
     { MODKEY,                       XK_semicolon,  togglescratch,   {.ui = 2 } },
