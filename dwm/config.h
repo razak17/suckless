@@ -78,6 +78,7 @@ static const Rule rules[] = {
     { "obsidian",              NULL,            NULL,             1 << 6,       0,           0,         0,        -1 },
     { "Brave",                 NULL,            NULL,             1 << 8,       0,           0,         0,        -1 },
     { "Thorium",               NULL,            NULL,             1 << 8,       0,           0,         0,        -1 },
+    { "Helium",                NULL,            NULL,             1 << 8,       0,           0,         0,        -1 },
     { "Mercury",               NULL,            NULL,             1 << 8,       0,           0,         0,        -1 },
     { "firefox",               NULL,            NULL,             1 << 8,       0,           0,         0,        -1 },
     { "floorp",                NULL,            NULL,             1 << 8,       0,           0,         0,        -1 },
