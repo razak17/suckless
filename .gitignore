@@ -13,9 +13,10 @@
 *.obj
 *.elf
 
-dwm
-st
-dmenu
-dwmblocks
-slstatus
+dwm/dwm
+dwm-old/dwm
+st/st
+dmenu/dmenu
+dwmblocks/dwmblocks
+slstatus/slstatus
 stest
