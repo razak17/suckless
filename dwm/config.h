@@ -283,6 +283,7 @@ static const Key keys[] = {
     { 0,                            XK_Print,                    spawn,    SHCMD("screenshot --select")},
     // Clipboard
     { MODKEY,                       XK_b,                        spawn,    SHCMD("bm")},
+    { MODKEY | ALTKEY,              XK_p,                        spawn,    SHCMD("clipmenu")},
     { ControlMask,                  XK_grave,                    spawn,    SHCMD("pick_clip_history -l")},
     { ControlMask | ShiftMask,      XK_grave,                    spawn,    SHCMD("pick_clip_history -s")},
     { MODKEY | ControlMask | ShiftMask, XK_g,                    spawn,    SHCMD("pick_clip_history -g") },
