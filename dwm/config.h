@@ -74,6 +74,7 @@ static const Rule rules[] = {
     { "mpv",                   NULL,            NULL,       	  1 << 5,       0,           1,         0,        -1 },
     { "Lutris",                NULL,            NULL,             1 << 5,       0,           0,         0,        -1 },
     { "Thunar",                NULL,            NULL,             1 << 6,       0,           0,         0,        -1 },
+    { "dolphin",               NULL,            NULL,             1 << 6,       0,           0,         0,        -1 },
     { "LRCGET",                NULL,            NULL,             1 << 6,       0,           0,         0,        -1 },
     { "Nautilus",              NULL,            NULL,             1 << 6,       0,           0,         0,        -1 },
     { "Slack",                 NULL,            NULL,             1 << 6,       0,           0,         0,        -1 },
