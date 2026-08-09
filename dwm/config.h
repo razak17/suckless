@@ -23,8 +23,9 @@ static const int topbar             = 1;       /* 0 means bottom bar */
 static const Bool viewontag  = True;
 static const char *fonts[]    = {
     "Cascadia Mono:size=9",
-    "Noto Color Emoji:pixelsize=11:antialias=true:autohint=true",
-    "JoyPixels:pixelsize=9:antialias=true:autohint=true"
+    "JoyPixels:size=9:antialias=true:autohint=true",
+    "Symbols Nerd Font Mono:size=9:antialias=true:autohint=true",
+    "Noto Color Emoji:size=9:antialias=true:autohint=true"
 };
 static const char dmenufont[] = "Operator Mono Lig Book:size=9";
 
