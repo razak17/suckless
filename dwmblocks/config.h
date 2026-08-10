@@ -12,7 +12,7 @@ static const Block blocks[] = {
     // {"",          "bluetooth",       5,                 6},
     {"",          "internet",        2,                 4},
     {"",          "battery",         3,                 3},
-    {"",          "clock",           1,                 5},
+    {"",          "clock",          60,                5},
     // {"📦 ",       "installed",       0,                17},
     // {"",          "disk",           10,                21},
 };
