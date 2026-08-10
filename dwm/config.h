@@ -22,12 +22,12 @@ static const int showbar            = 1;       /* 0 means no bar */
 static const int topbar             = 1;       /* 0 means bottom bar */
 static const Bool viewontag  = True;
 static const char *fonts[]    = {
-    "Cascadia Mono:size=9",
-    "JoyPixels:size=9:antialias=true:autohint=true",
-    "Symbols Nerd Font Mono:size=9:antialias=true:autohint=true",
-    "Noto Color Emoji:size=9:antialias=true:autohint=true"
+    "Cascadia Mono:size=8",
+    "JoyPixels:size=8:antialias=true:autohint=true",
+    "Symbols Nerd Font Mono:size=8:antialias=true:autohint=true",
+    "Noto Color Emoji:size=8:antialias=true:autohint=true"
 };
-static const char dmenufont[] = "Operator Mono Lig Book:size=9";
+static const char dmenufont[] = "Operator Mono Lig Book:size=8";
 
 #include "/home/razak/.cache/wal/colors-wal-dwm.h"
 
