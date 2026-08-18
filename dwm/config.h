@@ -255,10 +255,11 @@ static const Key keys[] = {
     { ControlMask | ShiftMask,      XK_grave,                    spawn,    SHCMD("pick_clip_history -s")},
     { MODKEY | ControlMask | ShiftMask, XK_g,                    spawn,    SHCMD("pick_clip_history -g") },
     { MODKEY | ControlMask | ShiftMask, XK_p,                    spawn,    SHCMD("pick_clip_history -p") },
+    // Keyboard
+    { MODKEY | ControlMask | ShiftMask, XK_k,                    spawn,    SHCMD("st-keyboard") },
     // Power
     { 0,                            XF86XK_Sleep,                spawn,    SHCMD("lock-sleep")},
     { 0,                            XF86XK_PowerOff,             spawn,    SHCMD("sysact")},
-    // Brightness
     // Brightness
     { MODKEY | ShiftMask,           XK_equal,                    spawn,    SHCMD("brightnessctl set 100%") },
     { 0,                            XF86XK_MonBrightnessDown,    spawn,    SHCMD("brightnessctl set 5%-") },
