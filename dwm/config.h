@@ -67,6 +67,7 @@ static const Rule rules[] = {
     { "Genymotion",            NULL,            NULL,             1 << 2,       0,           0,         0,        -1 },
     { "Jellyfin Media Player", NULL,            NULL,       	  1 << 3,       0,           0,         0,        -1 },
     { "Jellyfin Desktop",      NULL,            NULL,       	  1 << 3,       0,           0,         0,        -1 },
+    { "jellyfin",              NULL,            NULL,       	  1 << 3,       0,           0,         0,        -1 },
     { "Exodus",                NULL,            NULL,       	  1 << 4,       0,           0,         0,        -1 },
     { "bruno",                 NULL,            NULL,             1 << 4,       0,           0,         0,        -1 },
     { "Insomnia",              NULL,            NULL,             1 << 4,       0,           0,         0,        -1 },
